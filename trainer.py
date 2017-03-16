@@ -1,31 +1,33 @@
 import mysql.connector
-from witAI import loadEntity
+from witAI import load_entity, load_intent
 
-cnx = mysql.connector.connect(host="localhost",  # your host, usually localhost
-                                  user="root",  # your username
-                                  passwd="root",  # your password
-                                  db="Book")  # name of the data base
+
+cnx = mysql.connector.connect(host="localhost", user="root", passwd="root", db="Book")
 tableName = "BX_Books"
+
 
 def init():
     cursor = cnx.cursor(buffered=True)
     cursor.execute("SHOW columns FROM " + tableName)
+    columns = []
     for column in cursor.fetchall():
-        loadData(column)
+        load_data(column)
+        columns.append(column[0])
+    load_intent(columns)
 
 
-def loadData(column):
+
+def load_data(column):
     print "column : " + column[0]
     if "int" in column[1]:
         print "int"
-        loadEntity("wit$datetime", [])
-    # else:
-    #     cursor = cnx.cursor(buffered=True)
-    #     cursor.execute("SELECT " + column[0] + " FROM " + tableName)
-    #     values = []
-    #     for data in cursor.fetchall():
-    #         if type(data[0]) == unicode:
-    #             values.append({'value': data[0]})
-    #     if len(values) > 0:
-    #         loadEntity(column[0], values)
-
+        # load_entity("wit$datetime", [])
+    else:
+        cursor = cnx.cursor(buffered=True)
+        cursor.execute("SELECT " + column[0] + " FROM " + tableName)
+        values = []
+        for data in cursor.fetchall():
+            if type(data[0]) == unicode:
+                values.append({'value': data[0]})
+        if len(values) > 0:
+            load_entity(column[0], values)
