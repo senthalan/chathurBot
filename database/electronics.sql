@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2017 at 12:22 PM
+-- Generation Time: Apr 18, 2017 at 02:20 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.2
 -- PHP Version: 7.0.18-1+deb.sury.org~xenial+1
 
@@ -1389,7 +1389,6 @@ INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`
 ('http://www.kaymu.lk', 'LG', 'LG G3', 82000, '1.500'),
 ('http://www.kaymu.lk', 'LG', 'LG G FLEX D955', 85000, '1.500'),
 ('http://www.kaymu.lk', 'LG', 'Google Nexus 5 4G - 32GB', 46000, '1.500'),
-('http://www.kaymu.lk', 'LG', 'Mobile Phone', 3000, '0.125'),
 ('http://www.kaymu.lk', 'LG', 'LG C-195', 4500, '0.125'),
 ('http://www.kaymu.lk', 'LG', 'LG Opimus P880', 20000, '1.000'),
 ('http://www.kaymu.lk', 'LG', 'Google Nexus 5 Mobile Phone', 30000, '1.500'),
@@ -1448,9 +1447,9 @@ INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`
 ('http://www.kaymu.lk', 'Samsung', 'Brio Ds (B312E) - Samsung Feature Phone', 3996, '0.125'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung B312e', 3900, '0.125'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Core 2', 19500, '0.500'),
-('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Note', 18500, '0.500');
+('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Note', 18500, '0.500'),
+('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Duos 3', 15490, '0.500');
 INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`) VALUES
-('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Duos 3', 15490, '0.500'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy S Duos 3', 15590, '0.500'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy J1', 15700, '0.500'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy S Duos 3', 17500, '0.500'),
@@ -2112,9 +2111,9 @@ INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Note 3 LTE-A', 64000, '1.500'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy S2', 19000, '1.000'),
 ('http://www.kaymu.lk', 'Samsung', 'Samsung Galaxy Note', 24000, '1.000'),
-('http://www.hitad.lk', 'HTC', 'htc m8 4g', 63000, '1.500');
+('http://www.hitad.lk', 'HTC', 'htc m8 4g', 63000, '1.500'),
+('http://www.hitad.lk', 'HTC', 'htc m8 eye', 57000, '1.500');
 INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`) VALUES
-('http://www.hitad.lk', 'HTC', 'htc m8 eye', 57000, '1.500'),
 ('http://www.hitad.lk', 'HTC', 'htc one mini 2', 50500, '1.500'),
 ('http://www.hitad.lk', 'Nokia', 'nokia lumia 435', 10250, '0.500'),
 ('http://www.hitad.lk', 'Apple', 'apple iphone 5s', 77500, '1.500'),
