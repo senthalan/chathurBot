@@ -13,7 +13,7 @@ def init():
     for column in cursor.fetchall():
         load_data(column)
         columns.append(column[0])
-    load_intent(columns)
+    # load_intent(columns)
 
 
 
@@ -21,10 +21,8 @@ def load_data(column):
     print "column : " + column[0]
     if "int" in column[1]:
         print "int"
-        # load_entity("wit$datetime", [])
     if "double" in column[1]:
         print "double"
-        # load_entity("wit$datetime", [])
 
     else:
         cursor = cnx.cursor(buffered=True)
@@ -32,6 +30,10 @@ def load_data(column):
         values = []
         for data in cursor.fetchall():
             if type(data[0]) == unicode:
-                values.append({'value': data[0]})
+                temp = {'value': data[0], 'expressions': [data[0], data[0].upper(), data[0].lower(), "\"" + data[0] + "\""]}
+                if temp not in values:
+                    values.append(temp)
         if len(values) > 0:
-            load_entity(column[0], values)
+            if column[0] == "model":
+                print "upload it"
+                load_entity(column[0], values)
