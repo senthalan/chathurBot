@@ -1,4 +1,5 @@
 import json
+import urllib
 
 import requests as requests
 from readTrainingQuestions import read_training_questions
@@ -39,3 +40,17 @@ def load_intent(intents):
     else:
         print 'something went wrong when updating intent ' + ': error code ' + str(r.status_code)
         print r.content
+
+
+def send_question(question):
+    question = urllib.quote(question)
+    url = 'https://api.wit.ai/message?v=20170324&q=' + question
+    headers = {'Authorization': 'Bearer ' + access_token}
+
+    r = requests.get(url, headers=headers)
+    if r.status_code != 200:
+        print r.content
+        return -1
+    else:
+        response = json.loads(r.content)
+    return response['entities']

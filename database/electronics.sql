@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2017 at 02:20 PM
+-- Generation Time: Apr 21, 2017 at 11:41 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.2
 -- PHP Version: 7.0.18-1+deb.sury.org~xenial+1
 
@@ -541,7 +541,6 @@ INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z2', 77000, '1.500'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia V (4G Lte)', 29500, '1.500'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z2', 95000, '1.500'),
-('http://www.kaymu.lk', 'Sony', 'Sony', 17399, '1.000'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z', 49500, '1.500'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia M2', 34500, '1.500'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z3', 73000, '1.500'),
@@ -732,9 +731,9 @@ INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z1 Stylish', 79000, '2.000'),
 ('http://www.kaymu.lk', 'Sony', 'Sony xperia z2 4G LTE', 39900, '1.500'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z 1', 82000, '2.000'),
-('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z3', 89000, '3.000');
+('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z3', 89000, '3.000'),
+('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z2', 75000, '3.000');
 INSERT INTO `electronics` (`online_store`, `brand`, `model`, `price`, `ram_size`) VALUES
-('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z2', 75000, '3.000'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z3 Compact 4G', 96900, '3.000'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia M', 21670, '1.000'),
 ('http://www.kaymu.lk', 'Sony', 'Sony Xperia Z1', 52000, '1.500'),
