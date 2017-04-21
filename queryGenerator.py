@@ -2,7 +2,7 @@ from configReader import read_config
 
 table_name = read_config("tableName")
 equality_map = {"greater": ">=", "less": "<=", "equal": "="}
-entity_map = {"number": "ram_size", "amount_of_money": "price", "model": "model", "company": "company", "link": "link"}
+entity_map = {"number": "memory", "amount_of_money": "price", "model": "model", "company": "company", "onlineStore": "onlineStore"}
 
 
 def generate_query(response):
