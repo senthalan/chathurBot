@@ -1,0 +1,96 @@
+List down the popular phone brands?
+SELECT DISTINCT brand from `electronics`
+
+What are the popular phone brands?
+SELECT DISTINCT brand from `electronics`
+
+What are the phone models of Apple?
+SELECT DISTINCT model from `electronics` WHERE brand='Apple'
+
+List the phone models of HTC
+SELECT DISTINCT model from `electronics` WHERE brand='HTC'
+
+What are the phones available in Sony?
+SELECT DISTINCT model from `electronics` WHERE brand='Sony'
+
+What are the Apple phone models available in http://www.ideabeam.com?
+SELECT DISTINCT model from `electronics` WHERE brand='Apple' AND online_store='http://www.ideabeam.com'
+
+Where can i get Apple iPhone 6s 16GB?
+SELECT Online_Store from electronics where model='Apple iPhone 6s 16GB'
+
+Where can i get HTC brand phones?
+SELECT DISTINCT Online_Store from electronics where brand='HTC'
+
+What is the brand of Microsoft Lumia 430 Dual SIM?
+SELECT Brand from electronics where model='Microsoft Lumia 430 Dual SIM'
+ 
+What is the maximum price of HTC Desire 826 Dual Sim?
+SELECT MAX(price) from electronics where model='HTC Desire 826 Dual Sim'
+
+What is the least price of Samsung Galaxy S5?
+SELECT MIN(price) from electronics where Model='Samsung Galaxy S5'
+
+What are the samsung mobile phones with the price less than $25000?
+SELECT DISTINCT model FROM electronics where Price<5000 and Brand='Samsung'
+
+What is the highest cost phone in Nokia?
+SELECT model FROM electronics where brand='nokia' ORDER BY price DESC LIMIT 1
+
+What is the least cost phone in samsung?
+SELECT model FROM electronics where brand='samsung' ORDER BY price ASC LIMIT 1
+
+What is the minimum price of sony brand phones?
+SELECT price FROM electronics where brand='sony' ORDER BY price ASC LIMIT 1
+ 
+What is the least price of Apple iPad Air 2?
+SELECT price FROM electronics where model='Apple iPad Air 2' ORDER BY price ASC LIMIT 1
+
+Which HTC phone is very expensive?
+SELECT model FROM electronics where Brand='HTC' ORDER BY price DESC LIMIT 1
+ 
+Which brand is very expensive?
+SELECT brand FROM electronics ORDER BY price DESC LIMIT 1 Select greatest(price)
+ 
+Which phone is very expensive at http://www.ideabeam.com?
+SELECT model FROM electronics where Online_Store='http://www.ideabeam.com' ORDER BY price DESC LIMIT 1
+
+Which mobile price is above $90000 in HTC?
+SELECT model FROM electronics where price>10000 And price<15000 AND Brand='HTC'
+ 
+Which mobile price is between $10000 and $15000 in HTC?
+SELECT model FROM electronics where price>10000 And price<15000 AND Brand='HTC'
+ 
+Where can i get Apple iPhone 6s 64GB with best price?
+SELECT Online_Store FROM electronics WHERE Model='Apple iPhone 6s 64GB' ORDER BY price ASC LIMIT 1
+ 
+Where can i get Apple iPhone 5S 32GB with best price?
+SELECT Online_Store FROM electronics WHERE Model='Apple iPhone 5S 32GB' ORDER BY price ASC LIMIT 1
+
+What is the lowest budget phone in samsung?
+SELECT model FROM electronics WHERE Brand='Samsung' ORDER BY price ASC LIMIT 1
+
+What is the lowest budget phone available at http://www.ideabeam.com?
+SELECT model FROM electronics WHERE Online_Store='http://www.ideabeam.com' ORDER BY price ASC LIMIT 1
+
+What is/are the RAM size of Apple iPhone 6?
+SELECT DISTINCT RAM_Size from electronics WHERE Model='Apple iPhone 6'
+
+What is the minimum RAM size of phones in Apple iPhone 6?
+SELECT DISTINCT RAM_Size from electronics WHERE Model='Apple iPhone 6'
+
+What is the price of  HTC One M9 Plus?
+SELECT Price from electronics WHERE Model='HTC One M9 Plus'
+
+Where can i get  HTC One M9 Plus?
+SELECT Online_Store from electronics WHERE Model='HTC One M9 Plus'
+ 
+What is the RAM size of  HTC Desire 326G Dual?
+SELECT RAM_Size from electronics WHERE Model='HTC Desire 326G Dual'
+ 
+What is the least price of   HTC Desire 526G Dual Sim?
+SELECT Min(Price) from electronics WHERE Model='HTC Desire 526G Dual Sim'
+
+Where can i get  HTC Desire 526G Dual Sim with best price?
+SELECT Online_Store FROM electronics WHERE Model='HTC Desire 526G Dual Sim' ORDER BY price ASC LIMIT 1
+

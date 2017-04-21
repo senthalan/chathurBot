@@ -7,6 +7,7 @@ from readTrainingQuestions import get_query
 
 ques=[]
 j=0
+
 if __name__ == "__main__":
     read_file()
     questions=list(get_question())
