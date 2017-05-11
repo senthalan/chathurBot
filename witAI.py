@@ -50,7 +50,9 @@ def send_question(question):
     r = requests.get(url, headers=headers)
     if r.status_code != 200:
         print r.content
+
         return -1
     else:
         response = json.loads(r.content)
+
     return response['entities']
