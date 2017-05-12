@@ -1,6 +1,6 @@
 import mysql.connector
 
-cnx = mysql.connector.connect(host="localhost", user="root", passwd="root", db="Catalog")
+cnx = mysql.connector.connect(host="localhost", user="root", passwd="mathu", db="Catalog")
 
 
 def run_query(query):
