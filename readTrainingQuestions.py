@@ -4,7 +4,8 @@ def read_training_questions(intent):
 
 ques = []
 intent =[]
-entity =[]
+entities=[]
+
 query = []
 
 def read_file():
@@ -14,6 +15,7 @@ def read_file():
     f = open(path, "r")#Eg path : "/home/mathuriga/CSE-ENG/test"
 
     i = 0
+    j=0
 
     # Loop over each line in the file.
     for line in f.readlines():
@@ -27,11 +29,12 @@ def read_file():
             ques.append(line)
         elif i == 2:
             intent.append(line)
-        elif i == 3:
+        elif i==3:
+            entities.append(line)
+        elif i == 4:
             query.append(line)
         else:
             i = 0
-
 
 def get_question():
     return ques
@@ -41,3 +44,26 @@ def get_intent():
 
 def get_query():
     return query
+
+def get_entities():
+    return entities
+
+def generateEntityList(entity):
+    entityList = {}
+    entityTypeList=entity.split(';')
+
+    for entityType in entityTypeList:
+        value=[]
+        entityKeyValuePair=str(entityType).split('-')
+
+        key=entityKeyValuePair[0]
+
+        for x in str(entityKeyValuePair[1]).split(','):
+            value.append(x.lower())
+        # value=str(entityKeyValuePair[1]).split(',')
+
+        entityList[key.lower()]=value
+
+
+
+    return entityList
