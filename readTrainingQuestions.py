@@ -5,8 +5,8 @@ def read_training_questions(intent):
 ques = []
 intent =[]
 entities=[]
-
 query = []
+answers=[]
 
 def read_file():
     #user enter the path of the file which contains question and answers
@@ -33,6 +33,8 @@ def read_file():
             entities.append(line)
         elif i == 4:
             query.append(line)
+        elif i==5:
+            answers.append(line.lower().split(','))
         else:
             i = 0
 
@@ -47,6 +49,9 @@ def get_query():
 
 def get_entities():
     return entities
+
+def get_answers():
+    return answers
 
 def generateEntityList(entity):
     entityList = {}
@@ -63,7 +68,6 @@ def generateEntityList(entity):
         # value=str(entityKeyValuePair[1]).split(',')
 
         entityList[key.lower()]=value
-
 
 
     return entityList

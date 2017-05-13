@@ -2,22 +2,22 @@ from decimal import *
 
 getcontext().prec=3
 def calculateFullPrecision(FM, PM, WH):
-    FP = FM / (FM + PM + WH)
+    FP = Decimal(FM) /Decimal((FM + PM + WH))
     return FP
 
 
 def calculatePartialPrecision(PM, FM, WH):
-    PM = PM / (FM + PM + WH)
+    PM = Decimal(PM) / Decimal((FM + PM + WH))
     return PM
 
 
 def calculateFullRecall(FM, PM, CM):
-    FR = FM / (FM + PM + CM)
+    FR = Decimal(FM) / Decimal((FM + PM + CM))
     return FR
 
 
 def calculatePartialRecall(FM, PM, CM):
-    PR = PM / (FM + PM + CM)
+    PR = Decimal(PM) / Decimal((FM + PM + CM))
     return PR
 
 
@@ -32,7 +32,21 @@ def calculateTotalRecall(FR, PR):
 
 
 def calculateTruePositiveRate(TP, FN):
-
     TPR = (Decimal(TP) / (Decimal(TP) + Decimal(FN)))
     print TPR
     return TPR
+
+def calculatePrecision(TP,FP):
+    return Decimal(TP)/Decimal(TP+FP)
+
+def calculateRecall(TP,FN):
+    return Decimal(TP)/Decimal(TP+FN)
+
+def calculateFMeasure(precision,recall):
+    return (2*Decimal(precision)*Decimal(recall))/(Decimal(precision)+Decimal(recall))
+
+def calculateSQLRecall(noOfQues,noOfGeneratedQuery):
+    return Decimal(noOfGeneratedQuery)/Decimal(noOfQues)
+
+def calcultaeSQLPrecision(noOfGeneratedQuery,noOfCorrectQuery):
+    return Decimal(noOfCorrectQuery)/Decimal(noOfGeneratedQuery)
