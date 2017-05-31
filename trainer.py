@@ -13,7 +13,7 @@ def init():
     for column in cursor.fetchall():
         load_data(column)
         columns.append(column[0])
-    # load_intent(columns)
+        load_intent(columns)
 
 
 
@@ -34,6 +34,5 @@ def load_data(column):
                 if temp not in values:
                     values.append(temp)
         if len(values) > 0:
-            if column[0] == "model":
-                print "upload it"
-                load_entity(column[0], values)
+            print "upload it"
+            load_entity(column[0], values)
