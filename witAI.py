@@ -2,7 +2,6 @@ import json
 import urllib
 
 import requests as requests
-from readTrainingQuestions import read_training_questions
 from configReader import read_config
 
 access_token = read_config("witaiToken")
@@ -25,9 +24,8 @@ def load_entity(entity, values):
 def load_intent(intents):
     values = []
     for intent in intents:
-        training_questions = read_training_questions(intent)
         value = {'value': intent,
-                 'expressions': training_questions
+                 'expressions': []
                  }
         values.append(value)
 
@@ -42,6 +40,11 @@ def load_intent(intents):
         print r.content
 
 
+comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
+order_map = {"highest": "DES", "lowest": "ASC"}
+entity_map = {"number": "memory", "amount_of_money": "price", "model": "model", "company": "company", "onlineStore": "onlineStore", "brand" : "brand"}
+limit_map = {"is" : "1", "are" : ""}
+
 def send_question(question):
     question = urllib.quote(question)
     url = 'https://api.wit.ai/message?v=20170324&q=' + question
@@ -53,4 +56,34 @@ def send_question(question):
         return -1
     else:
         response = json.loads(r.content)
-    return response['entities']
+    response = response['entities']
+
+    intent = ''
+    entities_list = {}
+    extremum = ''
+    comparator = "="
+    order_by = ''
+    order = ''
+    limit = ''
+    # reading the response
+    for key in response:
+        if key == 'intent':
+            intent = ((response[key])[0])['value']
+        elif key == 'extremum':
+            extremum = ((response[key])[0])['value']
+        elif key == 'comparator':
+            comparator = comparator_map[((response[key])[0])['value']]
+        elif key == 'rank_for':
+            order_by = ((response[key])[0])['value']
+        elif key == 'rank':
+            order = order_map[((response[key])[0])['value']]
+        elif key =='limit' :
+            limit = limit_map[((response[key])[0])['value']]
+        else:
+            entities = (response[key])
+            values = []
+            for entity in entities:
+                values.append(str(entity['value']))
+            entities_list[entity_map[key]] = values
+
+    return intent, entities_list, extremum, comparator, order_by, order, limit
