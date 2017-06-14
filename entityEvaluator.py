@@ -32,8 +32,8 @@ def eveluateEntityPerQuestion(actualList,estimatedList):
     partialMatch = 0
     missedEntityCount = 0
     detectedWrongEntityCount = 0
-    print 'actual entity list :', actualList
-    print 'estimated entity list: ' , estimatedList
+    #print 'actual entity list :', actualList
+    #print 'estimated entity list: ' , estimatedList
     # global fullMatch,partialFlag,partialMatch,WHFlag,CMFlag,misssmatch,whmatch
     for entity in entitylist:
 
@@ -91,10 +91,10 @@ def eveluateEntityPerQuestion(actualList,estimatedList):
     overallTotalPrecision+=totalRecallPerQuestion
     overallTotalRecall+=totalRecallPerQuestion
 
-    print 'FullMatch : ', fullMatch
-    print 'PartialMatch : ', partialMatch
-    print 'Complete miss: ', completeMiss
-    print 'Wrong hit: ', wrongHit
+    # print 'FullMatch : ', fullMatch
+    # print 'PartialMatch : ', partialMatch
+    # print 'Complete miss: ', completeMiss
+    # print 'Wrong hit: ', wrongHit
     print 'Full presicion :', fullPrecision
     print 'Full Recall :', fullRecall
     print 'Partial presicion :', partialPreciion

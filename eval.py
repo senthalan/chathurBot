@@ -18,10 +18,10 @@ noOfGeneratedQueries=0
 
 def evaluateQuestion():
 
-    global intentTP
+    global intentTP,intentval
     global intentFN,noOfGeneratedQueries
     for j in range(len(questions)-1):
-        print 'Question :' + questions[j]
+        print 'Question ',j+1,':'+ questions[j]
         actualEntityList=generateEntityList(entitiesList[j])
 
         evaluatedEntityList = {}
@@ -41,13 +41,18 @@ def evaluateQuestion():
 
         if evaluate_intent(response,intents[j]):
             intentTP +=1
-            print 'intentTP:', intentTP
+            intentval="Intent is identified correctly"
+            #print 'intentTP:', intentTP
         else:
             intentFN +=1
-            print 'intentFN: ',intentFN
+            intentval="Intent is identified incorrectly"
+            #print 'intentFN: ',intentFN
 
         #evaluate entity
-        print 'evaluate entity'
+        #print 'evaluate entity'
+        print "Evaluation results per question :"
+        print "_________________________________"
+        print "Intent: " + intentval
         eveluateEntityPerQuestion(actualEntityList,evaluatedEntityList)
 
         #evaluate query
@@ -56,7 +61,7 @@ def evaluateQuestion():
         if len(query)!=0:
             estimatedAnswers=[]
             noOfGeneratedQueries+=1
-            print "query    : " + query
+            print " Generated Query    : " + query
 
             actualAns=get_answers()[j]
             estimatedAnswers = run_query(query)
@@ -67,6 +72,7 @@ def evaluateQuestion():
             print '\n'
         else:
             break
+
     return
 
 def evaluateSystem():
@@ -74,11 +80,11 @@ def evaluateSystem():
     intent_TPR = calculateTruePositiveRate(intentTP, intentFN)
     overallEntityPrecision=getOverallPrecision(len(questions))
     overallEntityRecall=getOverallRecall(len(questions))
-    print len(questions), noOfGeneratedQueries, getNoOfCorrectQueries()
+    # print len(questions), noOfGeneratedQueries, getNoOfCorrectQueries()
     overallSQLPrecision=calcultaeSQLPrecision(noOfGeneratedQueries,getNoOfCorrectQueries())
     overallSQLRecall=calculateSQLRecall(len(questions),noOfGeneratedQueries)
     fmeasure=calculateFMeasure(overallSQLPrecision,overallSQLRecall)
-    print "TPR for intent :" , intent_TPR
+    print "True Positive Ratio for intent Extraction :" , intent_TPR
     print "Precision Entity Extraction :", overallEntityPrecision
     print "Recall Entity Extraction :", overallEntityRecall
 
@@ -95,5 +101,6 @@ if __name__ == "__main__":
     intents=list(get_intent())
     entitiesList=list(get_entities())
     evaluateQuestion();
-    print "\n Evaluation results for overall system"
+    print "\n \n Evaluation results for overall system"
+    print "----------------------------------------"
     evaluateSystem();

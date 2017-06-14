@@ -33,7 +33,7 @@ def calculateTotalRecall(FR, PR):
 
 def calculateTruePositiveRate(TP, FN):
     TPR = (Decimal(TP) / (Decimal(TP) + Decimal(FN)))
-    print TPR
+    # print TPR
     return TPR
 
 def calculatePrecision(TP,FP):

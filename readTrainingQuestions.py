@@ -10,13 +10,13 @@ answers=[]
 
 def read_file():
     #user enter the path of the file which contains question and answers
-    path = raw_input("Enter file path:")
+
+    #path = raw_input("")
     # Open this file.
-    f = open(path, "r")#Eg path : "/home/mathuriga/CSE-ENG/test"
+    f = open("/home/mathuriga/CSE-ENG/test", "r")#Eg path : "/home/mathuriga/CSE-ENG/test"
 
     i = 0
     j=0
-
     # Loop over each line in the file.
     for line in f.readlines():
 
