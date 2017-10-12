@@ -4,18 +4,23 @@ table_name = read_config("tableName")
 
 
 def generate_query(intent, entities_list, extremum, comparator, order_by, order, limit):
-    query_template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} {where_expression} {order_expression}"
+    try:
+        query_template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} {where_expression} {order_expression}"
 
-    select = intent.lower()
+        select = intent.lower()
 
-    # joining the queries
-    where_part = build_where_template(entities_list, comparator)
+        # joining the queries
+        where_part = build_where_template(entities_list, comparator)
 
-    order_part = build_order_template(order, order_by)
+        order_part = build_order_template(order, order_by)
 
-    final_query = query_template.format(function=extremum, column_name=select, table_name=table_name,
-                                        where_expression=where_part, order_expression=order_part)
-    return final_query
+        final_query = query_template.format(function=extremum, column_name=select, table_name=table_name,
+                                            where_expression=where_part, order_expression=order_part)
+        return final_query
+    except:
+        print "Error"
+        return "NULL"
+
 
 
 def build_where_template(entities_list, comparator):
@@ -23,8 +28,11 @@ def build_where_template(entities_list, comparator):
     where_between_template = u"{entity_key} BETWEEN {entity_value_one} AND {entity_value_two}"
     where_list = []
     keys = entities_list.keys()
+
     for key in keys:
         entity_value = entities_list.pop(key, None)
+        if len(entity_value) == 0:
+            continue
         if (key == "price") or (key == "memory"):
             if comparator != "between":
                 where_query = where_template.format(entity_key=key, equality=comparator,

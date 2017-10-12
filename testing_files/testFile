@@ -1,0 +1,59 @@
+What are the Apple phone models available in http://www.ideabeam.com?
+model
+brand-Apple;onlineStore-http://www.ideabeam.com
+SELECT DISTINCT model from `electronics` WHERE brand = 'Apple' AND onlineStore = 'http://www.ideabeam.com'
+Apple iPhone 6s 64GB,Apple iPhone 6s 16GB,Apple iPhone 6 Plus 128GB,Apple iPhone 6 Plus 64GB,Apple iPhone 6 128GB,Apple iPhone 6 64GB,Apple iPhone 6 Plus 16GB,Apple iPhone 6 16GB,Apple iPhone 5s Gold 16GB,Apple iPhone 5s 16GB
+
+Where can i get Apple iPhone 6s 16GB?
+onlineStore
+model-Apple iPhone 6s 16GB
+SELECT onlineStore from electronics where model = 'Apple iPhone 6s 16GB'
+http://www.ideabeam.com
+
+Where can i get HTC brand phones?
+onlineStore
+brand-HTC
+SELECT DISTINCT Online_Store from electronics where brand = 'HTC'
+http://www.ideabeam.com,http://telescience.lk,http://justbuy.lk,http://www.kaymu.lk,http://www.hitad.lk
+
+What is the brand of Microsoft Lumia 430 Dual SIM?
+brand
+model-Microsoft Lumia 430 Dual SIM
+SELECT brand from electronics where model = 'Microsoft Lumia 430 Dual SIM'
+nokia
+
+What is the maximum price of HTC Desire 826 Dual Sim?
+price
+model-HTC Desire 826 Dual Sim;extremum-max
+SELECT max(price) from electronics where model = 'HTC Desire 826 Dual Sim'
+43900
+
+What is the minimum price of an Apple phone?
+price
+brand-Apple;extremum-min
+select min(price) from electronics where brand like "Apple"
+3599
+
+What is the maximum price of an Apple phone?
+price
+brand-HTC;extremum-max
+select max(price) from electronics where brand like "Apple"
+150150
+
+List the Apple phones which has the cost lower than 25000?
+model
+brand-HTC;rank_for-price;rank-DESC
+select model from electronics where brand like Apple AND price <= 25000
+Apple iPhone 6,Apple Iphone Headset Original (White),Apple iPhone 3GS 16GB,Apple iPhone 4 16GB,Apple iPhone 4,Apple iPhone 3GS,Apple iPhone 3GS 8GB,Apple Iphone 6+,Apple 4/4S,apple iphone 6 128gb gold,iphone 5s,apple i phone 6 16 gb,iphone 4
+
+What is  the ram size of Samsung Galaxy Ace 4 LTE?
+memory
+model-Samsung Galaxy Ace 4 LTE
+select memory from electronics where model like "Samsung Galaxy Ace 4 LTE"
+0.500,0.750
+
+Where can I get Samsung brand phones?
+onlineStore
+brand-Samsung
+Select onlineStore from electronics where brand like "Samsung"
+http://phoneshops.lk,http://www.ideabeam.com,http://telescience.lk,http://justbuy.lk,http://www.kaymu.lk,http://www.hitad.lk

@@ -80,10 +80,13 @@ def send_question(question):
         elif key =='limit' :
             limit = limit_map[((response[key])[0])['value']]
         else:
-            entities = (response[key])
-            values = []
-            for entity in entities:
-                values.append(str(entity['value']))
-            entities_list[entity_map[key]] = values
+            try:
+                entities = (response[key])
+                values = []
+                for entity in entities:
+                    values.append(str(entity['value']))
+                entities_list[entity_map[key]] = values
+            except:
+                print "Value Error"
 
     return intent, entities_list, extremum, comparator, order_by, order, limit
