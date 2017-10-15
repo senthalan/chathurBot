@@ -36,8 +36,12 @@ def build_where_template(entities_list, comparator):
                                                             entity_value_two=str(entity_value[1]))
                 where_list.append(where_query)
         else:
-            where_query = where_template.format(entity_key=key, equality='=',
-                                                entity_value="\"" + entity_value[0] + "\"")
+            temp = entity_value[0].split()
+            value = '%'
+            for val in temp:
+                value = value + val + '%'
+            where_query = where_template.format(entity_key=key, equality='like',
+                                                entity_value="\"" + value + "\"")
             where_list.append(where_query)
     final_where = ""
     for i in range(0, len(where_list)):
