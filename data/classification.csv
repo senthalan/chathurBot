@@ -1,4 +1,4 @@
-model,brand,online_store,memory,price,comparator,order_by,order,limit,where,where_text
+model,brand,onlineStore,memory,price,comparator,order_by,order,limit,where,where_text
 0,1,1,0,0,0,0,0,0,20,"where onlineStore like """" AND brand like """""
 1,0,0,0,0,0,0,0,0,10,"where model like """""
 0,0,1,1,1,1,0,0,0,20,"where onlineStore like """" AND memory = """""

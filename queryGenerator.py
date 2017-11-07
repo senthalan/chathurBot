@@ -45,7 +45,7 @@ def build_where_template(entities_list, comparator):
             where_list.append(where_query)
     final_where = ""
     for i in range(0, len(where_list)):
-        if (i == 0):
+        if i == 0:
             final_where += "WHERE "
         final_where += where_list[i] + " "
         if i != len(where_list) - 1:
