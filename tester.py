@@ -14,8 +14,8 @@ if __name__ == "__main__":
     queries=list(get_query())
     for j in range(len(questions)):
         print 'Question :' + questions[j]
-        response = send_question(questions[j])
-        query = generate_query(response)
+        intent, entities_list, extremum, comparator, order_by, order = send_question(questions[j])
+        query = generate_query(intent, entities_list, extremum, comparator, order_by, order)
         print "Generated query    : " + query
         print "Actual query     :" + queries[j]
         print "------------------------------------------------"

@@ -1,6 +1,4 @@
-def read_training_questions(intent):
-    questions = []
-    return questions
+import os
 
 ques = []
 intent =[]
@@ -11,10 +9,11 @@ answers=[]
 def read_file():
     #user enter the path of the file which contains question and answers
 
-    #path = raw_input("")
+    script_dir = os.path.dirname(__file__)  # <-- absolute dir the script is in
+    path = 'testing_files/test'
+    abs_file_path = os.path.join(script_dir, path)
     # Open this file.
-    f = open("/home/mathuriga/CSE-ENG/test", "r")#Eg path : "/home/mathuriga/CSE-ENG/test"
-
+    f = open(abs_file_path, "r")
     i = 0
     j=0
     # Loop over each line in the file.

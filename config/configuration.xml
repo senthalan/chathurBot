@@ -1,5 +1,5 @@
 <config>
-    <init>false</init>
-    <witaiToken>FW7VWV3J2G5K2XKSW2ISXJQNSSOQAUWQ</witaiToken>
+    <init>true</init>
+    <witaiToken>TXREEMYJC3QGIUYP3T4SV7VLULQR22TL</witaiToken>
     <tableName>electronics</tableName>
 </config>
