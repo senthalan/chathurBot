@@ -42,8 +42,10 @@ def load_intent(intents):
 
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
 order_map = {"highest": "DES", "lowest": "ASC"}
-entity_map = {"number": "memory", "amount_of_money": "price", "model": "model", "company": "company", "onlineStore": "onlineStore", "brand" : "brand"}
-limit_map = {"is" : "1", "are" : ""}
+entity_map = {"number": "memory", "amount_of_money": "price", "model": "model", "company": "company",
+              "onlineStore": "onlineStore", "brand": "brand"}
+limit_map = {"is": "1", "are": ""}
+
 
 def send_question(question):
     question = urllib.quote(question)
@@ -77,7 +79,7 @@ def send_question(question):
             order_by = ((response[key])[0])['value']
         elif key == 'rank':
             order = order_map[((response[key])[0])['value']]
-        elif key =='limit' :
+        elif key == 'limit':
             limit = limit_map[((response[key])[0])['value']]
         else:
             try:

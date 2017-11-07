@@ -7,17 +7,15 @@ entities=[]
 query = []
 answers=[]
 
-
-
 def read_file():
     #user enter the path of the file which contains question and answers
+
     script_dir = os.path.dirname(__file__)  # <-- absolute dir the script is in
     path = 'testing_files/testData'
     abs_file_path = os.path.join(script_dir, path)
     # Open this file.
     f = open(abs_file_path, "r")
     i = 0
-
     j=0
     # Loop over each line in the file.
     for line in f.readlines():
@@ -37,9 +35,9 @@ def read_file():
             query.append(line)
         elif i==5:
             answers.append(line.split(','))
+
         else:
             i = 0
-
 
 def get_question():
     return ques
@@ -151,4 +149,3 @@ def generateEntityList(entity):
         if key == "limit":
             completeEntityList[key]=get_limit()
     return completeEntityList
-

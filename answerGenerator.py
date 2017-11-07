@@ -26,7 +26,3 @@ def toString(answerList):
 
         result.append(str(val))
     return result
-
-
-
-
