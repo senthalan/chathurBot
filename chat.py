@@ -1,4 +1,5 @@
 from witAI import send_question
+from CoreNLP import send_question_core_nlp
 from queryGenerator import generate_query
 from databaseConnector import run_query
 from answerGenerator import generate_answer
@@ -14,7 +15,8 @@ if __name__ == "__main__":
                  'What is the least price of Samsung Galaxy S5?']
     for question in questions:
         print question
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(question.strip())
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(question.strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(question.strip())
         print ("intent : " + intent)
         print (entities_list)
         print ("extremum : " + extremum)
@@ -29,4 +31,4 @@ if __name__ == "__main__":
         answer = generate_answer(result, intent)
         print ("----------------------------------")
         print
-        break
+        # break

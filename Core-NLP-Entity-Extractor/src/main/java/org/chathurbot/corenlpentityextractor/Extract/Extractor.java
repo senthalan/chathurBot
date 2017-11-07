@@ -22,12 +22,12 @@ public class Extractor {
     Map<String, String> entities = new HashMap<>();
     Properties props1 = new Properties();
     props1.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, entitymentions");
-    props1.put("ner.model", "/home/abilashini/Desktop/chathurBot/Core-NLP-Entity-Extractor/resources/ner-all.ser.gz");
+    props1.put("ner.model", "/home/senthalan/project/fyp/chathurBot/Core-NLP-Entity-Extractor/resources/ner-all.ser.gz");
     StanfordCoreNLP pipelineAll = new StanfordCoreNLP(props1);
 
     Properties props2 = new Properties();
     props2.setProperty("annotators", "tokenize, ssplit, pos, lemma, ner, entitymentions");
-    props2.put("ner.model", "/home/abilashini/Desktop/chathurBot/Core-NLP-Entity-Extractor/resources/ner-model.ser.gz");
+    props2.put("ner.model", "/home/senthalan/project/fyp/chathurBot/Core-NLP-Entity-Extractor/resources/ner-model.ser.gz");
     StanfordCoreNLP pipelineModel = new StanfordCoreNLP(props2);
 
     NGramTokenizer tokenizer = new NGramTokenizer();
