@@ -1,16 +1,16 @@
 import mysql.connector
-
-cnx = mysql.connector.connect(host="localhost", user="root", passwd="root", db="Catalog")
+import unicodedata
+cnx = mysql.connector.connect(host="localhost", user="root", passwd="mathu", db="Catalog")
+cnx.text_factory = str
 
 
 def run_query(query):
+    answers=[]
     cursor = cnx.cursor(buffered=True)
-    try:
-        cursor.execute(query)
-        answers = cursor.fetchall()
-        cursor.close()
-    except mysql.connector.Error as err:
-        answers = ''
-    finally:
-        cursor.close()
+    cursor.execute(query)
+    result = [[str(item) for item in results] for results in cursor.fetchall()]
+    for val in result:
+       answers.append(''.join(val).lower())
+
+    cursor.close()
     return answers

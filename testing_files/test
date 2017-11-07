@@ -1,25 +1,33 @@
 What are the Apple phone models available in http://www.ideabeam.com?
+Model_equal
 SELECT DISTINCT model from `electronics` WHERE brand='Apple' AND online_store='http://www.ideabeam.com'
 
 Where can i get Apple iPhone 6s 16GB?
+OnlineStore_equal
 SELECT Online_Store from electronics where model='Apple iPhone 6s 16GB'
 
 Where can i get HTC brand phones?
+OnlineStore_equal
 SELECT DISTINCT Online_Store from electronics where brand='HTC'
 
 What is the brand of Microsoft Lumia 430 Dual SIM?
+brand_equal
 SELECT Brand from electronics where model='Microsoft Lumia 430 Dual SIM'
  
 What is the maximum price of HTC Desire 826 Dual Sim?
+Max_price_equal
 SELECT MAX(price) from electronics where model='HTC Desire 826 Dual Sim'
 
 What is the least price of Samsung Galaxy S5?
+Min_price_equal
 SELECT MIN(price) from electronics where Model='Samsung Galaxy S5'
 
 What are the samsung mobile phones with the price less than $25000?
+model_less
 SELECT DISTINCT model FROM electronics where Price<5000 and Brand='Samsung'
 
 What is the highest cost phone in Nokia?
+Model_max_price
 SELECT model FROM electronics where brand='nokia' ORDER BY price DESC LIMIT 1
 
 
