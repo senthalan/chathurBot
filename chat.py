@@ -6,12 +6,12 @@ from answerGenerator import generate_answer
 from queryClassifier import train, predit_query
 
 if __name__ == "__main__":
-    train()
-    questions = ['What are the Apple phone models available in http://www.ideabeam.com?',
-                 # 'Where can i get Apple iPhone 6s 16GB?',
-                 # 'Where can i get HTC brand phones?',
-                 # 'What is the brand of Microsoft Lumia 430 Dual SIM?',
-                 # 'What is the maximum price of HTC Desire 826 Dual Sim?',
+    # train()
+    questions = ['What are the Apple phone models available in www.ideabeam.com?',
+                 'Where can i get Apple iPhone 6s 16GB?',
+                 'Where can i get HTC brand phones?',
+                 'What is the brand of Microsoft Lumia 430 Dual SIM?',
+                 'What is the maximum price of HTC Desire 826 Dual Sim?',
                  'What is the least price of Samsung Galaxy S5?']
     for question in questions:
         print question
