@@ -1,0 +1,299 @@
+Which model has price above $70000 in HTC?
+model
+brand-HTC;price-70000;comparator->=
+select DISTINCT model from electronics where price >= 70000 AND brand like "HTC"
+HTC One M9 Plus,HTC One M9+,HTC One,HTC One M9,HTC One M8,Htc M8,Htc One Max,HTC ONE M8 4G,HTC M7,Htc Butterfly,Used HTC M8,HTC ONE M8.,HTC One M7,HTC M 8,HTC M8 16GB.
+
+where can i get HTC One M9 Plus?
+onlineStore
+model-HTC One M9 Plus
+select onlineStore from electronics where model like "HTC One M9 Plus"
+http://www.ideabeam.com
+
+List the phone models of Asus?
+model
+brand-Asus
+SELECT DISTINCT model from electronics WHERE brand = 'Asus'
+asus zenfone 2 (ze500cl)
+
+What are the Apple phone models available in http://www.ideabeam.com?
+model
+brand-Apple;onlineStore-http://www.ideabeam.com
+SELECT DISTINCT model from electronics WHERE brand = 'Apple' AND onlineStore = 'http://www.ideabeam.com'
+Apple iPhone 6s 64GB,Apple iPhone 6s 16GB,Apple iPhone 6 Plus 128GB,Apple iPhone 6 Plus 64GB,Apple iPhone 6 128GB,Apple iPhone 6 64GB,Apple iPhone 6 Plus 16GB,Apple iPhone 6 16GB,Apple iPhone 5s Gold 16GB,Apple iPhone 5s 16GB
+
+Where can i get Apple iPhone 6s 16GB?
+onlineStore
+model-Apple iPhone 6s 16GB
+SELECT onlineStore from electronics where model = 'Apple iPhone 6s 16GB'
+http://www.ideabeam.com
+
+Where can i get HTC brand phones?
+onlineStore
+brand-HTC
+SELECT DISTINCT onlineStore from electronics where brand = 'HTC'
+http://www.ideabeam.com,http://telescience.lk,http://justbuy.lk,http://www.kaymu.lk,http://www.hitad.lk
+
+What is the brand of Microsoft Lumia 430 Dual SIM?
+brand
+model-Microsoft Lumia 430 Dual SIM
+SELECT brand from electronics where model = 'Microsoft Lumia 430 Dual SIM'
+nokia
+
+What is the maximum price of HTC Desire 826 Dual Sim?
+price
+model-HTC Desire 826 Dual Sim;extremum-max
+SELECT MAX(price) from electronics where model like 'HTC Desire 826 Dual Sim'
+43900
+
+What is the minimum price of an Apple phone?
+price
+brand-Apple;extremum-min
+select min(price) from electronics where brand like "Apple"
+3599
+
+What is the maximum price of an Apple phone?
+price
+brand-Apple;extremum-max
+select max(price) from electronics where brand like "Apple"
+150150
+
+List the Apple phones which has the cost below than $25000?
+model
+brand-Apple;comparator-less;price-25000
+select model from electronics where brand like Apple AND price <= 25000
+Apple iPhone 6,Apple Iphone Headset Original (White),Apple iPhone 3GS 16GB,Apple iPhone 4 16GB,Apple iPhone 4,Apple iPhone 3GS,Apple iPhone 3GS 8GB,Apple Iphone 6+,Apple 4/4S,apple iphone 6 128gb gold,iphone 5s,apple i phone 6 16 gb,iphone 4
+
+What is  the ram of Samsung Galaxy Ace 4 LTE?
+memory
+model-Samsung Galaxy Ace 4 LTE
+select memory from electronics where model like "Samsung Galaxy Ace 4 LTE"
+0.500,0.750
+
+List the LG phones which has ram 1.5?
+model
+brand-LG;memory-1.5
+select model from electronics where brand like "LG" AND memory = 1.5
+LG G3,LG Magna,LG G2 4G LTE F320,LG Nexus 5,LG G3,LG G FLEX D955,Google Nexus 5 4G - 32GB,Google Nexus 5 Mobile Phone,LG Google Nexus 5 4G,Lg Optimus Gx - Lg-F310L,Lg G2 used phone,LG Optimus G3,LG Optimus L9,LG G Pro Lite
+
+What is the minimum Ram of an Apple phone?
+memory
+brand-Apple;extremum-min
+select min(memory) from electronics where brand like "Apple"
+0.125
+
+What is the price of Nokia phone with highest ram size at http://www.ideabeam.com?
+price
+brand-Nokia;rank_for-memory;rank-ASC;onlineStore-http:www.ideabeam.com
+select price from electronics where brand like "Apple" AND onlineStore LIKE "http://www.ideabeam.com" ORDER BY memory DESC LIMIT 1
+134450
+
+List the LG phone modlels which has price $16490?
+model
+brand-LG;price-24900;comparator-between
+select DISTINCT model from electronics where brand like "LG" AND price = 16490
+Samsung Galaxy Ace 3 S7270,Samsung Galaxy Core,samsung galaxy tab 4 7.0
+
+What is the minimum price of Nokia at http://justbuy.lk?
+price
+brand-Nokia;onlineStore-http://justbuy.lk;extremum-min
+select min(price) from electronics where onlineStore like "http://justbuy.lk" AND brand like "Nokia"
+19900
+
+What is the ram of Samsung Galaxy Golden I9230?
+memory
+model-Samsung Galaxy Golden I9230
+select memory from electronics where model like "Samsung Galaxy Golden I9230"
+3.000
+
+what are ram available in Samsung Galaxy Ace 3 Duos?
+memory
+model-Samsung Galaxy Ace 3 Duos
+select memory from electronics where model like "Samsung Galaxy Ace 3 Duos"
+0.750
+
+what is the maximum price of HTC phone?
+price
+brand-HTC;extremum-max
+select max(price) from electronics where brand like "HTC"
+98000
+
+List the brands available at http://www.kaymu.lk?
+brand
+onlineStore-http://www.kaymu.lk
+select brand from electronics where onlineStore like "http://www.kaymu.lk"
+HTC,Sony,Apple,Nokia,Blackberry,Huawei,LG,Samsung
+
+Where can i get Lenovo phones?
+onlineStore
+brand-Lenovo
+select DISTINCT onlineStore from electronics where brand like "Lenovo"
+http://www.hitad.lk
+
+What is the lowest cost phone in Sony?
+model
+brand-Sony;rank_for-price;rank-ASC
+select model from electronics where brand like "Sony" ORDER BY price ASC LIMIT 1
+Sony Ericsson K310i
+
+what is the model in HTC with ram 2 at http://www.ideabeam.com?
+model
+brand-HTC;memory-2;onlineStore-http://www.ideabeam.com
+select DISTINCT model from electronics where brand like "HTC" AND onlineStore like "http://www.ideabeam.com" AND memory=2
+HTC One M9 Plus,HTC One M9,HTC One mini 2,HTC One M8,HTC One
+
+what are the Nokia models available with ram 0.5 and cost between $20000 - $50000?
+model
+memory-0.5;price-20000,50000;comparator-BETWEEN;brand-Nokia
+select model from electronics where brand like "Nokia" AND memory=0.5 AND price BETWEEN 20000 AND 50000
+nokia lumia 820
+
+what are the models available with the price between $30000 to $50000 at http://telescience.lk?
+model
+onlineStore-http://telescience.lk;price-30000,50000;comparator-BETWEEN
+select model from electronics where onlineStore like "http://telescience.lk" AND price BETWEEN 30000 AND 50000
+HTC Desire 826 dual sim,HTC Desire 816 4G,HTC Desire 820 S 4G,Huawei P8 lite,Microsoft Lumia 640 XL 3G Dual SIM,Sony Xperia C3 Dual,Sony Xperia C3 LTE,Sony Xperia C4 Dual,Sony Xperia M4 Aqua,Samsung Galaxy J7,Samsung Galaxy Tab A 8.0,Samsung Galaxy A3 4G,Samsung Galaxy A5,Samsung Galaxy E5,Samsung Galaxy J5,Samsung Galaxy Tab 4 10.1 LTE,Samsung Galaxy Tab 4 7.0 LTE,Samsung I9305 Galaxy S III 4G,Samsung I9505 Galaxy S4-LTE
+
+What is the maximum ram in HTC One M9 Plus?
+memory
+model-HTC One M9 Plus;extremum-max
+select max(memory) from electronics where model like "HTC One M9 Plus"
+2.000
+
+what are the models available with the price less than $50000 and ram 1.5 at http://www.hitad.lk?
+model
+price-50000;memory-1.5;onlineStore-http://www.hitad.lk;comparator-<=
+select DISTINCT model from electronics where memory = 1.5 AND onlineStore like "http://www.hitad.lk" AND price < 50000
+apple iphone 5s 16gb,samsung galaxy tab 4 (10.1'),apple i phone 6 16 gb,samsung galaxy s4,samsung galaxy s2 gt i9100,samsung galaxy s6 (sm-g9200),samsung galaxy s3,iphone4s,iphone 4,iphone 4s 32gb,samsung galaxy s6 yateley,samsung galaxy s3 4g lte,samsung galaxy note 4,samsung galaxy e5,samsung galaxy tab 4 10.1,samsung galaxy tab 4 7.0,samsung galaxy s4 black edition,samsung s4 (4g),apple iphone 4s 16 gb
+
+where can i get highest cost Apple phone?
+onlineStore
+brand-Apple;rank_for-price;rank-DESC
+select onlineStore from electronics where brand like "Apple" ORDER BY price DESC LIMIT 1
+http://www.ideabeam.com
+
+Which brand have highest ram size at http://www.hitad.lk?
+brand
+rank_for-memory;rank-DESC
+select DISTINCT brand from electronics where onlineStore like "http://www.hitad.lk" ORDER BY memory DESC LIMIT 1
+Samsung
+
+what are the model available with highest ram size and price less than $50000?
+model
+price-50000;comparator-<=;rank_for-memory;rank-DESC
+select DISTINCT model from electronics where price <= 50000 ORDER BY memory DESC LIMIT 1
+Samsung Galaxy Ace 4 Duos
+
+What are the LG models available with ram 1?
+model
+memory-1;brand-LG
+select DISTINCT model from electronics where memory = 1 AND brand like "LG"
+LG L 60,LG Optimus L7 II,LG L70 Black,Lg Optimus 4G Lte ( Lg-Lu6200 ),LG L70 - Duos2,LG Opimus P880,Lg p500,LG Optimus LTE 2,G2,lg l bello dual,lg g2,lg optimus g e975
+
+List the brands available at http://phoneshops.lk?
+brand
+onlineStore-http://phoneshops.lk
+select DISTINCT brand from electronics where onlineStore like "http://phoneshops.lk"
+Samsung
+
+What are the Lenovo models available at http://www.hitad.lk?
+model
+onlineStore-http://www.hitad.lk;brand-Lenovo
+select DISTINCT model from electronics where onlineStore like "http://www.hitad.lk" AND brand like "Lenovo"
+4g lite lenovo,lenovo tablet with 3g call,onda v961w
+
+List the brands available at http://telescience.lk?
+brand
+onlineStore-http://telescience.lk
+select DISTINCT brand from electronics where onlineStore like "http://telescience.lk"
+Apple,HTC,Huawei,Nokia,Sony,Samsung
+
+what are the model available with highest ram size and price greater than $50000?
+model
+price-50000;comparator->=;rank_for-memory;rank-DESC
+select DISTINCT model from electronics where price >= 50000 ORDER BY memory ASC LIMIT 1
+Samsung Galaxy Mega 6.3 LTE I9205
+
+What is the maximum Ram Size of an Samsung phone?
+memory
+brand-Samsung;extremum-max
+select max(memory) from electronics where brand like "Samsung"
+5.000
+
+What are the phones available in Sony at http://telescience.lk?
+model
+brand-Sony;onlineStore-http://telescience.lk
+SELECT DISTINCT model from `electronics` WHERE brand = 'Sony' AND onlineStore LIKE "http://telescience.lk"
+Sony E4 Dual,Sony Xperia C3 Dual,Sony Xperia C3 LTE,Sony Xperia C4 Dual,Sony Xperia E1,Sony Xperia M2 Aqua,Sony Xperia M4 Aqua,Sony Xperia Z2,Sony Xperia Z3
+
+What are the Apple phone models available in http://www.ideabeam.com?
+model
+brand-Apple;onlineStore-http://www.ideabeam.com
+SELECT DISTINCT model from `electronics` WHERE brand = 'Apple' AND onlineStore='http://www.ideabeam.com'
+Apple iPhone 6s 64GB,Apple iPhone 6s 16GB,Apple iPhone 6 Plus 128GB,Apple iPhone 6 Plus 64GB,Apple iPhone 6 128GB,Apple iPhone 6 64GB,Apple iPhone 6 Plus 16GB,Apple iPhone 6 16GB,Apple iPhone 5s Gold 16GB,Apple iPhone 5s 16GB
+
+What are the Samsung mobile phones with the price less than $2000?
+model
+brand-Samsung;price-25000;comparator<2000
+SELECT DISTINCT model FROM electronics where price<=2000 AND brand LIKE "Samsung"
+Samsung 310
+
+What is the highest cost phone in Nokia?
+model
+brand-Nokia;rank_for-price;rank-DESC
+SELECT model FROM electronics where brand = 'nokia' ORDER BY price DESC LIMIT 1
+Nokia Lumia 930
+
+What is the least cost phone in Samsung?
+model
+brand-Samsung;rank_for-price;rank-ASC
+SELECT model FROM electronics where brand = 'samsung' ORDER BY price ASC LIMIT 1
+Samsung 310
+
+What is the minimum price of Sony brand phones?
+price
+brand-Sony;extremum-min
+SELECT price FROM electronics where brand = 'Sony' ORDER BY price ASC LIMIT 1
+2550
+
+What is the highest price of Apple iPad Air 2?
+price
+model-Apple iPad Air 2;extremum-max
+SELECT price FROM electronics where model = 'Apple iPad Air 2' ORDER BY price ASC LIMIT 1
+78900
+
+What is the maximum price of  HTC One M9 Plus?
+price
+model-HTC One M9 Plus;extremum-max
+SELECT price from electronics WHERE Model = 'HTC One M9 Plus'
+74250
+
+Where can i get  HTC One M9 Plus?
+onlineStore
+model-HTC One M9 Plus
+SELECT onlineStore from electronics WHERE Model = 'HTC One M9 Plus'
+http://www.ideabeam.com
+
+What is the minimum price of  HTC One M9 Plus?
+price
+model-HTC One M9 Plus;extremum-min
+SELECT price from electronics WHERE model = 'HTC One M9 Plus'
+74250
+
+where can i get HTC One?
+onlineStore
+model-HTC One
+select onlineStore from electronics where model like "HTC One"
+http://www.ideabeam.com,http://justbuy.lk,http://www.kaymu.lk
+
+What is the least cost phone in LG?
+model
+brand-LG;rank_for-price;rank-ASC
+select model from electronics where brand like "LG" ORDER BY price DESC LIMIT 1
+LG G FLEX D955
+
+List the brands available at http://www.hitad.lk?
+brand
+onlineStore-http://www.hitad.lk
+select DISTINCT brand from electronics where onlineStore like "http://www.hitad.lk"
+HTC,Nokia,Apple,Samsung,LG,Sony Ericsson,Sony,Other,Lenovo,Micromax,Asus,Huawei

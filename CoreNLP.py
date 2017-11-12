@@ -2,7 +2,8 @@ import json
 import urllib
 import requests as requests
 
-from textBlob_naive_bayes import classify
+from IntentClassificationNeuralNetworks import classifyNN
+
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
 order_map = {"highest": "DES", "lowest": "ASC", "least":"ASC" }
 entity_map = {"memory": "memory", "price": "price", "model": "model", "company": "company",
@@ -11,6 +12,7 @@ limit_map = {"is": "1", "are": ""}
 
 
 def send_question_core_nlp(question):
+    intent = classifyNN(question)
     question = urllib.quote(question)
     url = 'http://localhost:8080/entity/extract?question=' + question
 
@@ -22,7 +24,6 @@ def send_question_core_nlp(question):
         response = json.loads(r.content)
     print "response",response
 
-    intent = classify(question)
     entities_list = {}
     extremum = ''
     comparator = "="
