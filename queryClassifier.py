@@ -9,6 +9,8 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
+from configReader import read_config
+
 predictor_var = ['model', 'brand', 'onlineStore', 'memory', 'price', 'comparator', 'order_by', 'order',
                  'limit']
 model_logistic_regression = LogisticRegression()
@@ -39,6 +41,7 @@ query_template = {
     38: u"{entity_key} = {entity_value}  AND {entity_key_two} = {entity_value_two}  AND {entity_key_three} = {entity_value_three} ORDER BY {order_by} DESC LIMIT 1",
     39: u"{entity_key} = {entity_value}  AND {entity_key_two} = {entity_value_two}  AND {entity_key_three} = {entity_value_three} ORDER BY {order_by} ASC LIMIT 1",
 }
+table_name = read_config("tableName")
 
 
 def classification_model(model, data, predictors, outcome):
@@ -51,27 +54,27 @@ def classification_model(model, data, predictors, outcome):
 
     # Make predictions
     preds = model.predict(test)
-    print "accuracy", accuracy_score(test_labels, preds)
+    # print "accuracy", accuracy_score(test_labels, preds)
     score = precision_recall_fscore_support(test_labels, preds, average='macro')
-    print "precision", score[0]
-    print "recall", score[1]
-    print "fscore", score[2]
-    print
+    # print "precision", score[0]
+    # print "recall", score[1]
+    # print "fscore", score[2]
+    # print
 
 
 def train():
     df = pd.read_csv("data/classification.csv")  # Reading the dataset in a dataframe using Pandas
     outcome_var = 'where'
 
-    print 'LogisticRegression : '
+    # print 'LogisticRegression : '
     classification_model(model_logistic_regression, df, predictor_var, outcome_var)
-    print 'DecisionTreeClassifier : '
+    # print 'DecisionTreeClassifier : '
     classification_model(model_decision_tree_classifier, df, predictor_var, outcome_var)
-    print 'GaussianNB : '
+    # print 'GaussianNB : '
     classification_model(model_gaussian_nb, df, predictor_var, outcome_var)
-    print 'SVC : '
+    # print 'SVC : '
     classification_model(model_svc, df, predictor_var, outcome_var)
-    print 'MLPClassifier : '
+    # print 'MLPClassifier : '
     classification_model(model_mlp_classifier, df, predictor_var, outcome_var)
 
 
@@ -106,9 +109,9 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     else:
         X.append(1)
     # order
-    if order == 'Des':
+    if order == 'DESC':
         X.append(1)
-    if order == 'Ase':
+    if order == 'ASE':
         X.append(2)
     else:
         X.append(0)
@@ -120,28 +123,61 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
 
     prediction = model_mlp_classifier.predict([X])[0]
     predicted_query = query_template[prediction]
-    predicted_query.format(entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
-                               entity_bet_two=str(between_value[1]),order_by=order_by, order=order)
-    # if prediction == 12 or prediction == 22 or prediction == 32:
-    #     predicted_query.format(entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
-    #                            entity_bet_two=str(between_value[1]))
+
+    template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} where {where_expression}"
+
+    entity_key = ''
+    entity_value = ''
+    entity_key_two = ''
+    entity_value_two = ''
+    entity_key_three = ''
+    entity_value_three = ''
     is_prime_set = False
+    is_sec_set = False
     for key in keys:
-        entity_value = entities_list.get(key)
+        value = entities_list.get(key)
         if prediction == 11 or prediction == 21 or prediction == 31 or prediction == 13 or prediction == 23 or prediction == 33:
             if (key == "price") or (key == "memory"):
-                predicted_query.format(entity_key=key, equality=comparator,
-                                       entity_value=str(entity_value[0]))
+                entity_key = key
+                entity_value = str(value[0])
                 del entities_list[key]
                 is_prime_set = True
-    # if is_prime_set:
-    value = entities_list.pop()
-    print value
-        # predicted_query.format(entity_key=key, equality=comparator,
-        #                        entity_value=str(entity_value[0]))
+    for key in keys:
+        value = entities_list.get(key)
+        if not is_prime_set:
+            entity_key = key
+            entity_value = "\"" + value[0] + "\""
+            is_prime_set = True
+        elif not is_sec_set:
+            entity_key_two = key
+            entity_value_two = "\"" + value[0] + "\""
+            is_sec_set = True
+        else:
+            entity_key_three = key
+            entity_value_three = "\"" + value[0] + "\""
 
     # value = entities_list.pop()[0].split()
     # predicted_query.format(entity_key_two=key, entity_value_two="\"" + value + "\"")
     # value = entities_list.pop()[0].split()
     # predicted_query.format(entity_key_three=key, entity_value_three="\"" + value + "\"")
-    print predicted_query
+
+    if prediction == 12 or prediction == 22 or prediction == 32:
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three,
+                           entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
+                           entity_bet_two=str(between_value[1]))
+    elif prediction == 18 or prediction == 19 or prediction == 29 or prediction == 38 or prediction == 39:
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three,
+                           order_by=order_by, order=order)
+    else:
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three)
+    select = intent.lower()
+
+    final_query = template.format(function=extremum, column_name=select, table_name=table_name,
+                                    where_expression=where_part)
+    return final_query

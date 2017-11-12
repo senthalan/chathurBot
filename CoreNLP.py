@@ -2,6 +2,7 @@ import json
 import urllib
 import requests as requests
 
+from textBlob_naive_bayes import classify
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
 order_map = {"highest": "DES", "lowest": "ASC"}
 entity_map = {"memory": "memory", "price": "price", "model": "model", "company": "company",
@@ -21,7 +22,7 @@ def send_question_core_nlp(question):
         response = json.loads(r.content)
     print "response",response
 
-    intent = ''
+    intent = classify(question)
     entities_list = {}
     extremum = ''
     comparator = "="

@@ -1,8 +1,10 @@
 import unicodedata
 import json, ast
 from ast import literal_eval
+
+
 def generate_answer(answers, intent):
-    answerList=[]
+    answer_list = []
     # print answers
     # if len(answers) == 1:
     #     print 3
@@ -13,16 +15,13 @@ def generate_answer(answers, intent):
     #     print "no answer"
     #     print 6
     # # print "still working"
-
-
-
     for tup in answers:
-        answerList = answerList + [str(item).encode('ascii', 'backslashreplace') for item in tup]
-    return toString(answerList)
+        answer_list = answer_list + [str(item).encode('ascii', 'backslashreplace') for item in tup]
+    return toString(answer_list)
+
 
 def toString(answerList):
-    result=[]
+    result = []
     for val in answerList:
-
         result.append(str(val))
     return result
