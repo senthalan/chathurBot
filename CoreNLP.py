@@ -4,7 +4,7 @@ import requests as requests
 
 from textBlob_naive_bayes import classify
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
-order_map = {"highest": "DES", "lowest": "ASC"}
+order_map = {"highest": "DES", "lowest": "ASC", "least":"ASC" }
 entity_map = {"memory": "memory", "price": "price", "model": "model", "company": "company",
               "online_store": "onlineStore", "brand": "brand"}
 limit_map = {"is": "1", "are": ""}
@@ -58,12 +58,12 @@ def send_question_core_nlp(question):
                     entities_list[entity_map[key_str]] = values
             except:
                 print "Value Error"
-        print "intent: ",intent
-        print "entity:",entities_list
-        print "extremum:", extremum
-        print "comparator:",comparator
-        print "orderby:",order_by
-        print "order:", order
-        print "limit:",limit
+    print "intent: ",intent
+    print "entity:",entities_list
+    print "extremum:", extremum
+    print "comparator:",comparator
+    print "orderby:",order_by
+    print "order:", order
+    print "limit:",limit
 
     return intent, entities_list, extremum, comparator, order_by, order, limit

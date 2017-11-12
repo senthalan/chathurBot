@@ -67,17 +67,23 @@ public class Service {
               result.put(label, list);
             }
           } else if (label.equals("PRICE")) {
-          if (!result.containsKey(label)) {
+          word = word.replace("_"," ");
+          if (word.split(" ").length == 1) {
+            if (!result.containsKey(label)) {
               List<String> price = new ArrayList<>();
               price.add(word);
               result.put(label, price);
             } else {
               List<String> price = (ArrayList<String>) result.get(label);
               price.add(word);
-              result.put(label,price);
+              result.put(label, price);
             }
+          }
           } else {
-            result.put(label, word);
+            word = word.replace("_"," ");
+            if (word.split(" ").length == 1) {
+              result.put(label, word);
+            }
           }
         }
 

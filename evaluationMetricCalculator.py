@@ -3,12 +3,18 @@ from decimal import *
 
 getcontext().prec=3
 def calculateFullPrecision(FM, PM, WH):
-    FP = Decimal(FM) /Decimal((FM + PM + WH))
+    if(FM + PM +WH ==0):
+        FP=0
+    else:
+        FP = Decimal(FM) /Decimal((FM + PM + WH))
     return FP
 
 
 def calculatePartialPrecision(PM, FM, WH):
-    PM = Decimal(PM) / Decimal((FM + PM + WH))
+    if (FM + PM + WH == 0):
+        PM = 0
+    else:
+        PM = Decimal(PM) / Decimal((FM + PM + WH))
     return PM
 
 

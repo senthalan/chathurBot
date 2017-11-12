@@ -82,14 +82,14 @@ def startEvaluate():
         # print 'wrongHit:',wrongHit
 
         # TODO
-        # generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
-        # if generatedQuery!="NULL":
-        #     print "\t Generated query    : " + generatedQuery
-        #     result = run_query(generatedQuery)
-        #
-        #     answer = generate_answer(result, intent)
-        #
-        #     evaluateSqlPerQuestion(answers[i],answer)
+        generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
+        if generatedQuery!="NULL":
+            print "\t Generated query    : " + generatedQuery
+            result = run_query(generatedQuery)
+
+            answer = generate_answer(result, intent)
+
+            evaluateSqlPerQuestion(answers[i],answer)
         print ("---------------------------------------------------------------------------------------------------------")
         print
 
@@ -233,8 +233,10 @@ def evaluateSystem():
 def evaluateEntityExtractionModel(noOfQuestion):
     overallPrecision = Decimal(overallTotalPrecision) / noOfQuestion
     overallRecall = Decimal(overallTotalRecall) / noOfQuestion
+    overallFmeasure = Decimal(calculateFMeasure(overallPrecision,overallRecall))
     print "Entity Extraction Model Recall :",overallRecall
     print "Entity Extraction Model Precision :",overallPrecision
+    print "Entity Extraction Model fmeasure :", overallRecall
 
     return  overallRecall,overallPrecision
 
