@@ -6,7 +6,7 @@ from answerGenerator import generate_answer
 from queryClassifier import train, predit_query
 
 if __name__ == "__main__":
-    # train()
+    train()
     questions = ['What are the Apple phone models available in www.ideabeam.com?',
                  'Where can i get Apple iPhone 6s 16GB?',
                  'Where can i get HTC brand phones?',
@@ -24,8 +24,8 @@ if __name__ == "__main__":
         print ("order_by : " + order_by)
         print ("order : " + order)
         print ("limit : " + limit)
-        query = generate_query(intent, entities_list, extremum, comparator, order_by, order, limit)
-        # predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
+        # query = generate_query(intent, entities_list, extremum, comparator, order_by, order, limit)
+        query = predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
         print "query    : " + query
         result = run_query(query)
         answer = generate_answer(result, intent)

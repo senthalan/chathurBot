@@ -41,7 +41,7 @@ def load_intent(intents):
 
 
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
-order_map = {"highest": "DES", "lowest": "ASC"}
+order_map = {"highest": "DESC", "lowest": "ASC"}
 entity_map = {"number": "memory", "amount_of_money": "price", "model": "model", "company": "company",
               "onlineStore": "onlineStore", "brand": "brand"}
 limit_map = {"is": "1", "are": ""}

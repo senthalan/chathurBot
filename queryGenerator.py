@@ -22,7 +22,6 @@ def generate_query(intent, entities_list, extremum, comparator, order_by, order,
         return "NULL"
 
 
-
 def build_where_template(entities_list, comparator):
     where_template = u"{entity_key} {equality} {entity_value}"
     where_between_template = u"{entity_key} BETWEEN {entity_value_one} AND {entity_value_two}"
