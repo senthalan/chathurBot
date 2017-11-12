@@ -11,7 +11,8 @@ def read_file():
     #user enter the path of the file which contains question and answers
 
     script_dir = os.path.dirname(__file__)  # <-- absolute dir the script is in
-    path = 'testing_files/testData'
+    # path = 'testing_files/testData'
+    path = 'testing_files/testDataNLP'
     abs_file_path = os.path.join(script_dir, path)
     # Open this file.
     f = open(abs_file_path, "r")

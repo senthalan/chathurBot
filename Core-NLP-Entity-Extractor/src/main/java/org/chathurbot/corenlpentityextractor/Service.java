@@ -48,17 +48,23 @@ public class Service {
         } else if (label.equals("BRAND")){
             if (storage.getBrands().contains(word)) {
               word = word.replace("_"," ");
-              result.put(label, word);
+              List<String> list = new ArrayList<>();
+              list.add(word);
+              result.put(label, list);
             }
           } else if (label.equals("MODEL")) {
             if (storage.getModels().contains(word)) {
               word = word.replace("_"," ");
-              result.put(label, word);
+              List<String> list = new ArrayList<>();
+              list.add(word);
+              result.put(label, list);
             }
           } else if (label.equals("ONLINE_STORE")) {
             if (storage.getOnlineStores().contains(entity)) {
               word = word.replace("_"," ");
-              result.put(label, word);
+              List<String> list = new ArrayList<>();
+              list.add(word);
+              result.put(label, list);
             }
           } else if (label.equals("PRICE")) {
           if (!result.containsKey(label)) {

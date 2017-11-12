@@ -8,6 +8,7 @@ from cosineCalculator import *
 from difflib import SequenceMatcher
 from evaluateSql import *
 from answerGenerator import generate_answer
+from CoreNLP import send_question_core_nlp
 
 from intentEvaluator import evaluate_intent
 
@@ -38,8 +39,9 @@ def startEvaluate():
 
     for i in range(len(questions)-1):
         print "Question ",i+1,": ",questions[i]
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
-        # print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
+        print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
         # print "start"
         # intent="price"
         # entities_list={}
@@ -78,16 +80,18 @@ def startEvaluate():
         # print 'completeMiss:',completeMiss
         # print 'partialMatch:',partialMatch
         # print 'wrongHit:',wrongHit
-        generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
-        if generatedQuery!="NULL":
-            print "\t Generated query    : " + generatedQuery
-            result = run_query(generatedQuery)
 
-            answer = generate_answer(result, intent)
-
-            evaluateSqlPerQuestion(answers[i],answer)
-            print ("---------------------------------------------------------------------------------------------------------")
-            print
+        # TODO
+        # generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
+        # if generatedQuery!="NULL":
+        #     print "\t Generated query    : " + generatedQuery
+        #     result = run_query(generatedQuery)
+        #
+        #     answer = generate_answer(result, intent)
+        #
+        #     evaluateSqlPerQuestion(answers[i],answer)
+        print ("---------------------------------------------------------------------------------------------------------")
+        print
 
 
 

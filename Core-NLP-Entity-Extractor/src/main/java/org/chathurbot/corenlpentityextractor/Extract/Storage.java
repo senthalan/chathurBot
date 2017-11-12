@@ -16,7 +16,7 @@ public class Storage {
   Set<String> onlineStores = new HashSet<>();
 
   public void setStorage() {
-    File file = new File("/home/senthalan/project/fyp/chathurBot/Core-NLP-Entity-Extractor/data.txt");
+    File file = new File("/home/mathuriga/CSE-ENG/FYP/chathurBotCoreNLP/chathurBot/Core-NLP-Entity-Extractor/data.txt");
 
     Storage storage = new Storage();
     try (BufferedReader br = new BufferedReader(new FileReader(file))) {
