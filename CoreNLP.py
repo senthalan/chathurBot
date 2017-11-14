@@ -36,7 +36,7 @@ def send_question_core_nlp(question):
     # reading the response
     for key in response:
         key_str = str(key).lower()
-        elif key_str == 'comparator':
+        if key_str == 'comparator':
             comparator = comparator_map[response[key]]
         elif key_str == 'rank_for':
             order_by = response[key]
