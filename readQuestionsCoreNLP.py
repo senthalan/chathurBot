@@ -7,7 +7,7 @@ entities=[]
 query = []
 answers=[]
 
-def read_file():
+def readFileCoreNLP():
     #user enter the path of the file which contains question and answers
 
     script_dir = os.path.dirname(__file__)  # <-- absolute dir the script is in

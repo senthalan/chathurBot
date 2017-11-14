@@ -8,7 +8,7 @@ import json
 import numpy as np
 
 from evaluationMetricCalculator import calculateTruePositiveRate
-from intentEvaluator import evaluate_intent
+# from intentEvaluator import evaluate_intent
 
 # probability threshold
 ERROR_THRESHOLD = 0.2
@@ -260,37 +260,37 @@ def classifyIntentNN(sentence, show_details=False):
     return return_results[0][0]
 
 
-def evaluate():
-    file_dir = os.path.dirname(__file__)
-    path = 'data/test'
-    abs_file_path = os.path.join(file_dir, path)
-    f = open(abs_file_path, "r")
-    num = 0
-    filelines = f.read().splitlines()
-
-    # measures for intent
-    intentTP = 0
-    intentFN = 0
-    sentence = ''
-    sentence_class = ''
-    for index, line in enumerate(filelines):
-        data = ()
-        line = line.strip()
-        if not line:
-            continue
-        if line.startswith("#"):
-            continue
-        if num == 0:
-            sentence = line
-        elif num == 1:
-            sentence_class = line
-        elif num == 4:
-            intent = classifyIntentNN(sentence)
-            if evaluate_intent(intent, sentence_class):
-                intentTP += 1
-            else:
-                intentFN += 1
-            num = -1
-        num += 1
-    intentModelPrecision = calculateTruePositiveRate(intentTP, intentFN)
-    print "True Positive Rate of intent Classification Model :", intentModelPrecision
+# def evaluate():
+#     file_dir = os.path.dirname(__file__)
+#     path = 'data/test'
+#     abs_file_path = os.path.join(file_dir, path)
+#     f = open(abs_file_path, "r")
+#     num = 0
+#     filelines = f.read().splitlines()
+#
+#     # measures for intent
+#     intentTP = 0
+#     intentFN = 0
+#     sentence = ''
+#     sentence_class = ''
+#     for index, line in enumerate(filelines):
+#         data = ()
+#         line = line.strip()
+#         if not line:
+#             continue
+#         if line.startswith("#"):
+#             continue
+#         if num == 0:
+#             sentence = line
+#         elif num == 1:
+#             sentence_class = line
+#         elif num == 4:
+#             intent = classifyIntentNN(sentence)
+#             if evaluate_intent(intent, sentence_class):
+#                 intentTP += 1
+#             else:
+#                 intentFN += 1
+#             num = -1
+#         num += 1
+#     intentModelPrecision = calculateTruePositiveRate(intentTP, intentFN)
+#     print "True Positive Rate of intent Classification Model :", intentModelPrecision

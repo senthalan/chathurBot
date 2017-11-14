@@ -9,8 +9,8 @@ def run_query(query):
     cursor = cnx.cursor(buffered=True)
     cursor.execute(query)
     result = [[str(item) for item in results] for results in cursor.fetchall()]
-    # for val in result:
-    #    answers.append(''.join(val).lower())
+    for val in result:
+       answers.append(''.join(val).lower())
 
     cursor.close()
-    return result
+    return answers

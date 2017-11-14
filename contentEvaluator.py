@@ -1,19 +1,18 @@
 from witAI import send_question
 from queryGenerator import generate_query
 from databaseConnector import run_query
-from readQuestionsWit import *
-from CoreNLP import send_question_core_nlp
-# from readQuestionsCoreNLP import *
+# from readQuestionsWit import *
+from readQuestionsCoreNLP import *
 from evaluationMetricCalculator import *
 from collections import Iterable
 from cosineCalculator import *
 from difflib import SequenceMatcher
 from evaluateSql import *
 from answerGenerator import generate_answer
-
+from CoreNLP import send_question_core_nlp
 from queryClassifier import train, predit_query
 
-from intentEvaluator import evaluate_intent
+# from intentEvaluator import evaluate_intent
 
 i=0
 
@@ -51,30 +50,7 @@ def startEvaluate():
         # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
         intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
         print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
-        # print "start"
-        # intent="price"
-        # entities_list={}
-        # entities_list['onlineStore']=['http://telescience.lk','apple','http://aab.lk']
-        # entities_list['model']=['HTC Desire 326G','nokia']
-        # entities_list['brand'] = ['apple', 'noia','aaacf']
-        # extremum='phone'
-        # order='at'
-        # comparator='more'
-        # order_by=''
-        # limit='3'
-        #evaluate intent accuracy
 
-        if evaluate_intent(intent, intents[i]):
-            intentTP += 1
-            print "\t Intend : is identified correctly"
-            # print "intend",intent
-            intentFlag = True
-        else:
-            intentFN += 1
-            print "\t Intend : is not identified correctly"
-            intentFlag = False
-
-        calculatePassedQueries(intentFlag)
     #fill the empty entity list
         for entity in entityTypeList:
             if entity not in entities_list:
@@ -82,25 +58,13 @@ def startEvaluate():
         #evaluate entity accuracy
         actutalListx=generateEntityList(entitiesList[i])
 
-        fullMatch=calculateFullMatch(entities_list,actutalListx,extremum,comparator,order_by,order,limit)
-        completeMiss,partialMatch,wrongHit=calculateCompleteMiss(entities_list,actutalListx,extremum,comparator,order_by,order,limit)
-        evaluateEntityExtraction()
+        calculateFullMatch(entities_list,actutalListx,extremum,comparator,order_by,order,limit)
+        calculateCompleteMiss(entities_list,actutalListx,extremum,comparator,order_by,order,limit)
+
         # print 'fullmatch: ',fullMatch
         # print 'completeMiss:',completeMiss
         # print 'partialMatch:',partialMatch
         # print 'wrongHit:',wrongHit
-
-        # TODO
-        # generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
-        generatedQuery = predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
-        if generatedQuery!="NULL" and intent!="":
-            print "\t Generated query    : " + generatedQuery
-            result = run_query(generatedQuery)
-
-
-            answer = generate_answer(result, intent)
-
-            evaluateSqlPerQuestion(answers[i],answer)
         print ("---------------------------------------------------------------------------------------------------------")
         print
 
@@ -115,7 +79,8 @@ def flatten(lis):
              yield item
 
 def calculateFullMatch(identifiedList,actualList,extremum,comparator, order_by, order, limit):
-    fullMatch=0
+    global fullMatch
+    # fullMatch=0
     temp={}
     for entity in entityTypeList:
 
@@ -142,9 +107,10 @@ def calculateFullMatch(identifiedList,actualList,extremum,comparator, order_by, 
     return fullMatch
 
 def calculateCompleteMiss(identifiedList,actualList,extremum,comparator, order_by, order, limit):
-    completeMiss = 0
-    partialMatch=0
-    wrongHit=0
+    global completeMiss,partialMatch,wrongHit
+    # completeMiss = 0
+    # partialMatch=0
+    # wrongHit=0
     tempActualList={}
     tempGeneratedList={}
 
@@ -207,71 +173,30 @@ def calculateCompleteMiss(identifiedList,actualList,extremum,comparator, order_b
     return completeMiss,partialMatch,wrongHit
 
 
-def evaluateIntentClassificationModel():
-    intentModelPrecision=calculateTruePositiveRate(intentTP,intentFN)
-    print "True Positive Rate of intent Classification Model :", intentModelPrecision
-
-def evaluateEntityExtraction():
-    global overallTotalPrecision,overallTotalRecall,overallFullPrecision,overallFullRecall
+def evaluateEntityExtractionModel(noOfQuestion):
     fullPrecision = calculateFullPrecision(fullMatch, partialMatch, wrongHit)
     fullRecall = calculateFullRecall(fullMatch, partialMatch, completeMiss)
     partialPreciion = calculatePartialPrecision(partialMatch, fullMatch, wrongHit)
     partialRecall = calculatePartialRecall(fullMatch, partialMatch, completeMiss)
-    totalPrecisionPerQuestion = calculateTotalPrecision(fullPrecision, partialPreciion)
-    totalRecallPerQuestion = calculateTotalRecall(fullRecall, partialRecall)
+    totalPrecision = calculateTotalPrecision(fullPrecision, partialPreciion)
+    totalRecall = calculateTotalRecall(fullRecall, partialRecall)
+    totalFullFMeaure = calculateFMeasure(fullPrecision, fullRecall)
+    totalFMeaure = calculateFMeasure(totalPrecision, totalRecall)
 
-    print "\t Entity Extraction Result : "
-    print "\t   Recall of Question : ", totalRecallPerQuestion
-    print "\t   Precision of Question :",totalPrecisionPerQuestion
-    totalFMeaurePerQuestion = calculateFMeasure(totalPrecisionPerQuestion, totalRecallPerQuestion)
-    print "\t   Fmeasure of Question :" , totalFMeaurePerQuestion
-    overallTotalPrecision += totalPrecisionPerQuestion
-    overallTotalRecall += totalRecallPerQuestion
-    overallFullPrecision+=fullPrecision
-    overallFullRecall+=fullRecall
-
-def evaluateSystem():
-    # print "overall",passedQuery,getNoOfCorrectQueries(),len(questions)
-    print passedQuery,getNoOfCorrectQueries(),len(questions)
-    systemRecall=Decimal(passedQuery)/Decimal(len(questions))
-    systemPrecision=Decimal(getNoOfCorrectQueries())/Decimal(passedQuery)
-    systemFmeasure=calculateFMeasure(systemPrecision,systemRecall)
-    print "Query Generator Recall : " , systemRecall
-    print "Query Generator Precision : ", systemPrecision
-    print "Query Generator Fmeasure : ", systemFmeasure
-
-    return systemRecall,systemPrecision
-
-
-def evaluateEntityExtractionModel(noOfQuestion):
-    overallPrecision = Decimal(overallTotalPrecision) / noOfQuestion
-    overallRecall = Decimal(overallTotalRecall) / noOfQuestion
-    overallSystemFullRecall=Decimal(overallFullRecall) / noOfQuestion
-    overallSystemFullPrecision=Decimal(overallFullPrecision) / noOfQuestion
-    overallSystemFMeasure=Decimal(calculateFMeasure(overallSystemFullPrecision,overallSystemFullRecall))
-    overallFmeasure = Decimal(calculateFMeasure(overallPrecision,overallRecall))
     print "entityExtractor : Traditional Approach : "
-    print "Entity Extraction Model Recall :", overallSystemFullRecall
-    print "Entity Extraction Model Precision :", overallSystemFullPrecision
-    print "Entity Extraction Model fmeasure :", overallSystemFMeasure
+    print "Entity Extraction Model Recall :", fullRecall
+    print "Entity Extraction Model Precision :", fullPrecision
+    print "Entity Extraction Model fmeasure :", totalFullFMeaure
 
     print "entityExtractor : Adopted Approach : "
-    print "Entity Extraction Model Recall :",overallRecall
-    print "Entity Extraction Model Precision :",overallPrecision
-    print "Entity Extraction Model fmeasure :", overallFmeasure
-
-    return  overallRecall,overallPrecision
-
-def calculatePassedQueries(intentFlag):
-    global passedQuery
-
-    if(intentFlag):
-        passedQuery+=1
+    print "Entity Extraction Model Recall :",totalRecall
+    print "Entity Extraction Model Precision :",totalPrecision
+    print "Entity Extraction Model fmeasure :",  totalFMeaure
 
 if __name__ == "__main__":
     #Read the test file
-    readFileWit()
-    # readFileCoreNLP()
+    # readFileWit()
+    readFileCoreNLP()
     questions=list(get_question())
     queries=list(get_query())
     intents=list(get_intent())
@@ -283,9 +208,8 @@ if __name__ == "__main__":
     print
     print "-----------------------------OVER ALL SYSTEM RESULT-----------------------------------"
 
-    evaluateIntentClassificationModel()
+    # evaluateIntentClassificationModel()
     evaluateEntityExtractionModel(len(questions))
-    evaluateSystem()
 
 
 

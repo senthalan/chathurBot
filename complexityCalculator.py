@@ -1,5 +1,5 @@
 
-from readTrainingQuestions import *
+from readQuestionsWit import *
 import math
 from decimal import *
 
@@ -86,7 +86,7 @@ def calculateComplexity():
 
 if __name__ == "__main__":
     #Read the test file
-    read_file()
+    readFileWit()
     calculateComplexity()
 
 

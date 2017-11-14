@@ -1,10 +1,10 @@
 from witAI import send_question
 from queryGenerator import generate_query
 from databaseConnector import run_query
-from readTrainingQuestions import get_question
-from readTrainingQuestions import read_file
-from readTrainingQuestions import get_query
-from readTrainingQuestions import get_intent
+from readQuestionsWit import get_question
+from readQuestionsWit import readFileWit
+from readQuestionsWit import get_query
+from readQuestionsWit import get_intent
 from intentEvaluator import evaluate_intent
 from calculation import calculateTruePositiveRate
 
@@ -40,7 +40,7 @@ def evaluateSystem():
     return
 
 if __name__ == "__main__":
-    read_file()
+    readFileWit()
     questions=list(get_question())
     queries=list(get_query())
     intents=list(get_intent())

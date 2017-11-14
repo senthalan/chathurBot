@@ -6,9 +6,9 @@ from nltk.stem.lancaster import LancasterStemmer
 import os
 import json
 import numpy as np
-
+# from intentEvaluator import evaluate_intent
 from evaluationMetricCalculator import calculateTruePositiveRate
-from intentEvaluator import evaluate_intent
+
 
 # probability threshold
 ERROR_THRESHOLD = 0.2
@@ -261,45 +261,45 @@ def classifyExtremumNN(sentence, show_details=False):
         return ''
     return return_results[0][0]
 
-def evaluateExtremum():
-    file_dir = os.path.dirname(__file__)
-    path = 'data/test'
-    abs_file_path = os.path.join(file_dir, path)
-    f = open(abs_file_path, "r")
-    num  = 0
-    filelines = f.read().splitlines()
+# def evaluateExtremum():
+#     file_dir = os.path.dirname(__file__)
+#     path = 'data/test'
+#     abs_file_path = os.path.join(file_dir, path)
+#     f = open(abs_file_path, "r")
+#     num  = 0
+#     filelines = f.read().splitlines()
+#
+#     # measures for intent
+#     intentTP = 0
+#     intentFN = 0
+#     sentence = ''
+#     sentence_class = 'none'
+#     for index, line in enumerate(filelines):
+#         data = ()
+#         line = line.strip()
+#         if not line:
+#             continue
+#         if line.startswith("#"):
+#             continue
+#         if num == 0:
+#             sentence = line
+#         elif num == 2:
+#             entities = line.split(';')
+#             for entity in entities:
+#                 en = entity.split('-')
+#                 if en[0] == 'extremum':
+#                     sentence_class = en[1]
+#         elif num == 4:
+#             intent = classifyExtremumNN(sentence)
+#             if evaluate_intent(intent, sentence_class):
+#                 intentTP += 1
+#             else:
+#                 intentFN += 1
+#             num = -1
+#             sentence_class = 'none'
+#         num += 1
+#     intentModelPrecision = calculateTruePositiveRate(intentTP, intentFN)
+#     print "True Positive Rate of extremum Classification Model :", intentModelPrecision
 
-    # measures for intent
-    intentTP = 0
-    intentFN = 0
-    sentence = ''
-    sentence_class = 'none'
-    for index, line in enumerate(filelines):
-        data = ()
-        line = line.strip()
-        if not line:
-            continue
-        if line.startswith("#"):
-            continue
-        if num == 0:
-            sentence = line
-        elif num == 2:
-            entities = line.split(';')
-            for entity in entities:
-                en = entity.split('-')
-                if en[0] == 'extremum':
-                    sentence_class = en[1]
-        elif num == 4:
-            intent = classifyExtremumNN(sentence)
-            if evaluate_intent(intent, sentence_class):
-                intentTP += 1
-            else:
-                intentFN += 1
-            num = -1
-            sentence_class = 'none'
-        num += 1
-    intentModelPrecision = calculateTruePositiveRate(intentTP, intentFN)
-    print "True Positive Rate of extremum Classification Model :", intentModelPrecision
-
-if __name__ == "__main__":
-    evaluateExtremum()
+# if __name__ == "__main__":
+#     evaluateExtremum()

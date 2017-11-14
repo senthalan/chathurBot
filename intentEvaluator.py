@@ -7,4 +7,3 @@ def evaluate_intent(intent,actualIntent):
         return 1
     else:
         return 0
-

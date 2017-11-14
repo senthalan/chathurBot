@@ -14,6 +14,7 @@ limit_map = {"is": "1", "are": ""}
 
 def send_question_core_nlp(question):
     intent = classifyIntentNN(question)
+    print "xx"
     extremum = classifyExtremumNN(question)
     if extremum == 'none':
         extremum = ''
@@ -26,7 +27,7 @@ def send_question_core_nlp(question):
         return -1
     else:
         response = json.loads(r.content)
-    print "response",response
+    # print "response",response
 
     entities_list = {}
     comparator = "="
@@ -58,12 +59,12 @@ def send_question_core_nlp(question):
                     entities_list[entity_map[key_str]] = values
             except:
                 print "Value Error"
-    print "intent: ",intent
-    print "entity:",entities_list
-    print "extremum:", extremum
-    print "comparator:",comparator
-    print "orderby:",order_by
-    print "order:", order
-    print "limit:",limit
+    # print "intent: ",intent
+    # print "entity:",entities_list
+    # print "extremum:", extremum
+    # print "comparator:",comparator
+    # print "orderby:",order_by
+    # print "order:", order
+    # print "limit:",limit
 
     return intent, entities_list, extremum, comparator, order_by, order, limit
