@@ -1,6 +1,6 @@
 import mysql.connector
 import unicodedata
-cnx = mysql.connector.connect(host="localhost", user="root", passwd="root", db="Catalog")
+cnx = mysql.connector.connect(host="localhost", user="root", passwd="mathu", db="Catalog")
 cnx.text_factory = str
 
 

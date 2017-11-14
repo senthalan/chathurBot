@@ -1,4 +1,4 @@
-Which model has price above $70000 in HTC?
+Which model has price above Rs70000 in HTC?
 model
 brand-HTC;price-70000;comparator->=
 select DISTINCT model from electronics where price >= 70000 AND brand like "HTC"
@@ -58,7 +58,7 @@ brand-Apple;extremum-max
 select max(price) from electronics where brand like "Apple"
 150150
 
-List the Apple phones which has the cost below than $25000?
+List the Apple phones which has the cost below than Rs25000?
 model
 brand-Apple;comparator-less;price-25000
 select model from electronics where brand like Apple AND price <= 25000
@@ -88,7 +88,7 @@ brand-Nokia;rank_for-memory;rank-ASC;onlineStore-http:www.ideabeam.com
 select price from electronics where brand like "Apple" AND onlineStore LIKE "http://www.ideabeam.com" ORDER BY memory DESC LIMIT 1
 134450
 
-List the LG phone modlels which has price $16490?
+List the LG phone modlels which has price Rs16490?
 model
 brand-LG;price-24900;comparator-between
 select DISTINCT model from electronics where brand like "LG" AND price = 16490
@@ -142,13 +142,13 @@ brand-HTC;memory-2;onlineStore-http://www.ideabeam.com
 select DISTINCT model from electronics where brand like "HTC" AND onlineStore like "http://www.ideabeam.com" AND memory=2
 HTC One M9 Plus,HTC One M9,HTC One mini 2,HTC One M8,HTC One
 
-what are the Nokia models available with ram 0.5 and cost between $20000 - $50000?
+what are the Nokia models available with ram 0.5 and cost between Rs20000 - Rs50000?
 model
 memory-0.5;price-20000,50000;comparator-BETWEEN;brand-Nokia
 select model from electronics where brand like "Nokia" AND memory=0.5 AND price BETWEEN 20000 AND 50000
 nokia lumia 820
 
-what are the models available with the price between $30000 to $50000 at http://telescience.lk?
+what are the models available with the price between Rs30000 to Rs50000 at http://telescience.lk?
 model
 onlineStore-http://telescience.lk;price-30000,50000;comparator-BETWEEN
 select model from electronics where onlineStore like "http://telescience.lk" AND price BETWEEN 30000 AND 50000
@@ -160,7 +160,7 @@ model-HTC One M9 Plus;extremum-max
 select max(memory) from electronics where model like "HTC One M9 Plus"
 2.000
 
-what are the models available with the price less than $50000 and ram 1.5 at http://www.hitad.lk?
+what are the models available with the price less than Rs50000 and ram 1.5 at http://www.hitad.lk?
 model
 price-50000;memory-1.5;onlineStore-http://www.hitad.lk;comparator-<=
 select DISTINCT model from electronics where memory = 1.5 AND onlineStore like "http://www.hitad.lk" AND price < 50000
@@ -178,7 +178,7 @@ rank_for-memory;rank-DESC
 select DISTINCT brand from electronics where onlineStore like "http://www.hitad.lk" ORDER BY memory DESC LIMIT 1
 Samsung
 
-what are the model available with highest ram size and price less than $50000?
+what are the model available with highest ram size and price less than Rs50000?
 model
 price-50000;comparator-<=;rank_for-memory;rank-DESC
 select DISTINCT model from electronics where price <= 50000 ORDER BY memory DESC LIMIT 1
@@ -208,13 +208,13 @@ onlineStore-http://telescience.lk
 select DISTINCT brand from electronics where onlineStore like "http://telescience.lk"
 Apple,HTC,Huawei,Nokia,Sony,Samsung
 
-what are the model available with highest ram size and price greater than $50000?
+what are the model available with highest ram size and price greater than Rs50000?
 model
 price-50000;comparator->=;rank_for-memory;rank-DESC
 select DISTINCT model from electronics where price >= 50000 ORDER BY memory ASC LIMIT 1
 Samsung Galaxy Mega 6.3 LTE I9205
 
-What is the maximum Ram Size of a Samsung phone?
+What is the maximum Ram Size of an Samsung phone?
 memory
 brand-Samsung;extremum-max
 select max(memory) from electronics where brand like "Samsung"
@@ -232,7 +232,7 @@ brand-Apple;onlineStore-http://www.ideabeam.com
 SELECT DISTINCT model from `electronics` WHERE brand = 'Apple' AND onlineStore='http://www.ideabeam.com'
 Apple iPhone 6s 64GB,Apple iPhone 6s 16GB,Apple iPhone 6 Plus 128GB,Apple iPhone 6 Plus 64GB,Apple iPhone 6 128GB,Apple iPhone 6 64GB,Apple iPhone 6 Plus 16GB,Apple iPhone 6 16GB,Apple iPhone 5s Gold 16GB,Apple iPhone 5s 16GB
 
-What are the Samsung mobile phones with the price less than $2000?
+What are the Samsung mobile phones with the price less than Rs2000?
 model
 brand-Samsung;price-25000;comparator<2000
 SELECT DISTINCT model FROM electronics where price<=2000 AND brand LIKE "Samsung"

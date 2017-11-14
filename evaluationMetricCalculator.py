@@ -3,12 +3,18 @@ from decimal import *
 
 getcontext().prec=3
 def calculateFullPrecision(FM, PM, WH):
-    FP = Decimal(FM) /Decimal((FM + PM + WH))
+    if(FM + PM +WH ==0):
+        FP=0
+    else:
+        FP = Decimal(FM) /Decimal((FM + PM + WH))
     return FP
 
 
 def calculatePartialPrecision(PM, FM, WH):
-    PM = Decimal(PM) / Decimal((FM + PM + WH))
+    if (FM + PM + WH == 0):
+        PM = 0
+    else:
+        PM = Decimal(PM) / Decimal((FM + PM + WH))
     return PM
 
 
@@ -47,7 +53,10 @@ def calculateRecall(TP,FN):
     return Decimal(TP)/Decimal(TP+FN)
 
 def calculateFMeasure(precision,recall):
-    return (2*Decimal(precision)*Decimal(recall))/(Decimal(precision)+Decimal(recall))
+    if (precision ==0 and recall==0):
+        return 0
+    else:
+        return (2*Decimal(precision)*Decimal(recall))/(Decimal(precision)+Decimal(recall))
 
 def calculateSQLRecall(noOfQues,noOfGeneratedQuery):
     return Decimal(noOfGeneratedQuery)/Decimal(noOfQues)

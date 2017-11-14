@@ -8,6 +8,7 @@ from cosineCalculator import *
 from difflib import SequenceMatcher
 from evaluateSql import *
 from answerGenerator import generate_answer
+from CoreNLP import send_question_core_nlp
 
 from intentEvaluator import evaluate_intent
 
@@ -38,8 +39,9 @@ def startEvaluate():
 
     for i in range(len(questions)-1):
         print "Question ",i+1,": ",questions[i]
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
-        # print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
+        print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
         # print "start"
         # intent="price"
         # entities_list={}
@@ -78,6 +80,8 @@ def startEvaluate():
         # print 'completeMiss:',completeMiss
         # print 'partialMatch:',partialMatch
         # print 'wrongHit:',wrongHit
+
+        # TODO
         generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
         if generatedQuery!="NULL":
             print "\t Generated query    : " + generatedQuery
@@ -86,8 +90,8 @@ def startEvaluate():
             answer = generate_answer(result, intent)
 
             evaluateSqlPerQuestion(answers[i],answer)
-            print ("---------------------------------------------------------------------------------------------------------")
-            print
+        print ("---------------------------------------------------------------------------------------------------------")
+        print
 
 
 
@@ -229,8 +233,10 @@ def evaluateSystem():
 def evaluateEntityExtractionModel(noOfQuestion):
     overallPrecision = Decimal(overallTotalPrecision) / noOfQuestion
     overallRecall = Decimal(overallTotalRecall) / noOfQuestion
+    overallFmeasure = Decimal(calculateFMeasure(overallPrecision,overallRecall))
     print "Entity Extraction Model Recall :",overallRecall
     print "Entity Extraction Model Precision :",overallPrecision
+    print "Entity Extraction Model fmeasure :", overallRecall
 
     return  overallRecall,overallPrecision
 
