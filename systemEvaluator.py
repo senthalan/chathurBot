@@ -39,8 +39,8 @@ def startEvaluate():
 
     for i in range(len(questions)-1):
         print "Question ",i+1,": ",questions[i]
-        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
         print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
         # print "start"
         # intent="price"
@@ -83,7 +83,7 @@ def startEvaluate():
 
         # TODO
         generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
-        if generatedQuery!="NULL":
+        if generatedQuery!="NULL" and intent!="":
             print "\t Generated query    : " + generatedQuery
             result = run_query(generatedQuery)
 
@@ -236,7 +236,7 @@ def evaluateEntityExtractionModel(noOfQuestion):
     overallFmeasure = Decimal(calculateFMeasure(overallPrecision,overallRecall))
     print "Entity Extraction Model Recall :",overallRecall
     print "Entity Extraction Model Precision :",overallPrecision
-    print "Entity Extraction Model fmeasure :", overallRecall
+    print "Entity Extraction Model fmeasure :", overallFmeasure
 
     return  overallRecall,overallPrecision
 

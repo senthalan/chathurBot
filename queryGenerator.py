@@ -5,7 +5,7 @@ table_name = read_config("tableName")
 
 def generate_query(intent, entities_list, extremum, comparator, order_by, order, limit):
     try:
-        query_template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} {where_expression} {order_expression}"
+        query_template = u"SELECT {function}({column_name}) FROM {table_name} {where_expression} {order_expression}"
 
         select = intent.lower()
 

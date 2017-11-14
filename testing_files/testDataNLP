@@ -1,3 +1,15 @@
+Where can i get Apple iPhone 6s 16GB?
+onlineStore
+model-Apple iPhone 6s 16GB
+SELECT onlineStore from electronics where model = 'Apple iPhone 6s 16GB'
+http://www.ideabeam.com
+
+List the phone models of Asus?
+model
+brand-Asus
+SELECT DISTINCT model from `electronics` WHERE brand = 'Asus'
+asus zenfone 2 (ze500cl)
+
 Which model has price above Rs70000 in HTC?
 model
 brand-HTC;price-70000;comparator->=
@@ -10,23 +22,11 @@ model-HTC One M9 Plus
 select onlineStore from electronics where model like "HTC One M9 Plus"
 http://www.ideabeam.com
 
-List the phone models of Asus?
-model
-brand-Asus
-SELECT DISTINCT model from `electronics` WHERE brand = 'Asus'
-asus zenfone 2 (ze500cl)
-
 What are the Apple phone models available in http://www.ideabeam.com?
 model
 brand-Apple;onlineStore-http://www.ideabeam.com
 SELECT DISTINCT model from `electronics` WHERE brand = 'Apple' AND onlineStore = 'http://www.ideabeam.com'
 Apple iPhone 6s 64GB,Apple iPhone 6s 16GB,Apple iPhone 6 Plus 128GB,Apple iPhone 6 Plus 64GB,Apple iPhone 6 128GB,Apple iPhone 6 64GB,Apple iPhone 6 Plus 16GB,Apple iPhone 6 16GB,Apple iPhone 5s Gold 16GB,Apple iPhone 5s 16GB
-
-Where can i get Apple iPhone 6s 16GB?
-onlineStore
-model-Apple iPhone 6s 16GB
-SELECT onlineStore from electronics where model = 'Apple iPhone 6s 16GB'
-http://www.ideabeam.com
 
 Where can i get HTC brand phones?
 onlineStore

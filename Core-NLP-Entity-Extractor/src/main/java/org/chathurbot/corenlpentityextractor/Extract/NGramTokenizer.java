@@ -17,7 +17,7 @@ public class NGramTokenizer {
     Reader reader = new StringReader(question);
     StandardTokenizer source = new StandardTokenizer(reader);
     TokenStream tokenStream = new StandardFilter(source);
-    ShingleFilter shingleFilter = new ShingleFilter(tokenStream, 2, 7);
+    ShingleFilter shingleFilter = new ShingleFilter(tokenStream, 2, 2);
 
     CharTermAttribute charTermAttribute = shingleFilter.addAttribute(CharTermAttribute.class);
     StringBuilder stringBuilder = new StringBuilder();

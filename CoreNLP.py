@@ -33,9 +33,9 @@ def send_question_core_nlp(question):
     # reading the response
     for key in response:
         key_str = str(key).lower()
-        if key_str == 'intent':
-            intent = response[key]
-        elif key_str == 'extremum':
+        # if key_str == 'intent':
+        #     intent = response[key]
+        if key_str == 'extremum':
             extremum = response[key]
         elif key_str == 'comparator':
             comparator = comparator_map[response[key]]

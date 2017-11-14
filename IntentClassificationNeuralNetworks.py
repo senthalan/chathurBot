@@ -284,7 +284,8 @@ def evaluate():
             sentence_class = line
         elif num == 4:
             intent = classifyNN(sentence)
-            print intent, " - ", sentence_class
+
+            # print intent, " - ", sentence_class
             if evaluate_intent(intent, sentence_class):
                 intentTP += 1
             else:
