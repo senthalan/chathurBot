@@ -16,7 +16,7 @@ def generate_answer(answers, intent):
     #     print 6
     # # print "still working"
     for tup in answers:
-        answer_list = answer_list + [str(item).encode('ascii', 'backslashreplace') for item in tup]
+        answer_list = answer_list + [str(item) for item in tup]
     return toString(answer_list)
 
 

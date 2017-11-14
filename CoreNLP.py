@@ -2,7 +2,8 @@ import json
 import urllib
 import requests as requests
 
-from IntentClassificationNeuralNetworks import classifyNN
+from ExtremumClassificationNeuralNetworks import classifyExtremumNN
+from IntentClassificationNeuralNetworks import classifyIntentNN
 
 comparator_map = {"more": ">=", "less": "<=", "equal": "=", "between": "between"}
 order_map = {"highest": "DES", "lowest": "ASC", "least":"ASC" }
@@ -12,7 +13,10 @@ limit_map = {"is": "1", "are": ""}
 
 
 def send_question_core_nlp(question):
-    intent = classifyNN(question)
+    intent = classifyIntentNN(question)
+    extremum = classifyExtremumNN(question)
+    if extremum == 'none':
+        extremum = ''
     question = urllib.quote(question)
     url = 'http://localhost:8080/entity/extract?question=' + question
 
@@ -25,7 +29,6 @@ def send_question_core_nlp(question):
     print "response",response
 
     entities_list = {}
-    extremum = ''
     comparator = "="
     order_by = ''
     order = ''
@@ -33,10 +36,6 @@ def send_question_core_nlp(question):
     # reading the response
     for key in response:
         key_str = str(key).lower()
-        # if key_str == 'intent':
-        #     intent = response[key]
-        if key_str == 'extremum':
-            extremum = response[key]
         elif key_str == 'comparator':
             comparator = comparator_map[response[key]]
         elif key_str == 'rank_for':
