@@ -1,0 +1,599 @@
+Which model has price above $50000 in Nokia?
+none
+brand-HTC;price-70000;comparator->=
+
+where can i get Sony Xperia U?
+none
+model-HTC One M9 Plus
+
+List the phone models of Apple?
+none
+brand-Asus
+
+What are the Nokia phone models available in http://justbuy.lk?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+Where can i get HTC One 16GB?
+none
+model-Apple iPhone 6s 16GB
+
+Where can i get Apple brand phones?
+none
+brand-HTC
+
+What is the brand of Samsung Galaxy Grand Neo GT-I9060?
+none
+model-Microsoft Lumia 430 Dual SIM
+
+What is the maximum price of Nokia Lumia 620?
+max
+model-HTC Desire 826 Dual Sim;extremum-max
+
+What is the minimum price of a Samsung phone?
+min
+brand-Apple;extremum-min
+
+What is the maximum price of a Nokia phone?
+max
+brand-Apple;extremum-max
+
+List the Nokia phones which has the cost below than $35000?
+none
+brand-Apple;comparator-less;price-25000
+
+What is  the ram of Sony Xperia C3(Mint)?
+none
+model-Samsung Galaxy Ace 4 LTE
+
+List the Apple phones which has ram 0.75?
+none
+brand-LG;memory-1.5
+
+What is the minimum Ram of a Nokia phone?
+min
+brand-Apple;extremum-min
+
+What is the price of Nokia phone with lowest ram  at http://justbuy.lk?
+none
+brand-Nokia;rank_for-memory;rank-ASC;onlineStore-http:www.ideabeam.com
+
+List the Nokia phone modlels which has price $19900?
+none
+brand-LG;price-24900;comparator-between
+
+What is the minimum price of Nokia at http://www.ideabeam.com?
+min
+brand-Nokia;onlineStore-http://justbuy.lk;extremum-min
+
+What is the ram of Sony Xperia M Dual (White)?
+none
+model-Samsung Galaxy Golden I9230
+
+what are ram available in Sony Xperia V?
+none
+model-Samsung Galaxy Ace 3 Duos
+
+what is the minimum price of HTC phone?
+min
+brand-HTC;extremum-min
+
+List the brands available at http://phoneshops.lk?
+none
+onlineStore-http://www.kaymu.lk
+
+Where can i get Sony phones?
+none
+brand-Lenovo
+
+What is the lowest cost phone in Samsung?
+none
+brand-Sony;rank_for-price;rank-ASC
+
+what is the model in HTC with ram 2 at http://phoneshops.lk?
+none
+brand-HTC;memory-2;onlineStore-http://www.ideabeam.com
+
+what are the Samsung models available with ram 0.5 and cost between $10000 - $15000?
+none
+memory-0.5;price-20000,50000;comparator-BETWEEN;brand-Nokia
+
+what are the models available with the price between $20000 to $20000 at http://telescience.lk?
+none
+onlineStore-http://telescience.lk;price-30000,50000;comparator-BETWEEN
+
+What is the maximum ram in http://justbuy.lk?
+max
+model-HTC One M9 Plus;extremum-max
+
+what are the models available with the price greater than $20000 and ram 0.5 at http://www.hitad.lk?
+none
+price-50000;memory-1.5;onlineStore-http://www.hitad.lk;comparator-<=
+
+where can i get highest cost Sony phone?
+none
+brand-Apple;rank_for-price;rank-DESC
+
+Which brand has highest ram size at http://phoneshops.lk?
+none
+rank_for-memory;rank-DESC
+
+what are the model available with highest ram size and price greater than $30000?
+none
+price-50000;comparator-<=;rank_for-memory;rank-DESC
+
+What are the Nokia models available with ram 1?
+none
+memory-1;brand-LG
+
+List the brands available at http://phoneshops.lk?
+none
+onlineStore-http://phoneshops.lk
+
+What are the Lenovo models available at http://phoneshops.lk?
+none
+onlineStore-http://www.hitad.lk;brand-Lenovo
+
+List the brands available at http://phoneshops.lk?
+none
+onlineStore-http://telescience.lk
+
+what are the models available with highest ram size and price greater than $30000?
+none
+price-50000;comparator->=;rank_for-memory;rank-DESC
+
+What is the maximum Ram Size of a Nokia phone?
+max
+brand-Samsung;extremum-max
+
+What are the phones available in Samsung at http://telescience.lk?
+none
+brand-Sony;onlineStore-http://telescience.lk
+
+What are the Samsung phone models available in http://phoneshops.lk?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+What are the Apple mobile phones with the price more than $2000?
+none
+brand-Samsung;price-25000;comparator<2000
+
+What is the highest cost phone in Samsung?
+none
+brand-Nokia;rank_for-price;rank-DESC
+
+What is the least cost phone in Nokia?
+none
+brand-Samsung;rank_for-price;rank-ASC
+
+What is the minimum price of Apple brand phones?
+min
+brand-Sony;extremum-min
+
+What is the highest price of Nokia Lumia 520?
+max
+model-Apple iPad Air 2;extremum-max
+
+What is the maximum price of Samsung S7262?
+max
+model-HTC One M9 Plus;extremum-max
+
+Where can i get  Samsung Galaxy Grand Neo GT-I9060?
+none
+model-HTC One M9 Plus
+
+What is the maximum price of  HTC One M9 Plus?
+min
+model-HTC One M9 Plus;extremum-min
+
+where can i get Sony Xperia L?
+none
+model-HTC One
+
+What is the least cost phone in Sony?
+none
+brand-LG;rank_for-price;rank-ASC
+
+List the brands available at http://www.justbuy.lk?
+none
+onlineStore-http://www.hitad.lks
+
+Which model has price above $60000 in HTC?
+none
+brand-HTC;price-70000;comparator->=
+
+where can i get HTC One?
+none
+model-HTC One M9 Plus
+
+List the phone models of Apple?
+none
+brand-Asus
+
+What are the Apple phone models available in http://www.justbuy.com?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+Where can i get Samsung Galaxy Note 3 Neo?
+none
+model-Apple iPhone 6s 16GB
+
+Where can i get Samsung brand phones?
+none
+brand-HTC
+
+What is the brand of Samsung Galaxy Note 3 Neo?
+none
+model-Microsoft Lumia 430 Dual SIM
+
+What is the maximum price of Samsung Galaxy Note 3 Neo?
+min
+model-HTC Desire 826 Dual Sim;extremum-min
+
+What is the minimum price of a Sony phone?
+min
+brand-Apple;extremum-min
+
+What is the minimum price of an Nokia phone?
+max
+brand-Apple;extremum-max
+
+List the Nokia phones which has the cost below than $35000?
+none
+brand-Apple;comparator-less;price-25000
+
+What is  the ram of Samsung I8552 Galaxy Grand Quattro?
+none
+model-Samsung Galaxy Ace 4 LTE
+
+List the LG phones which has ram 0.75?
+none
+brand-LG;memory-1.5
+
+What is the maximum Ram of an Nokia phone?
+max
+brand-Apple;extremum-max
+
+What is the price of Sony phone with highest ram size at http://www.justbuy.com?
+none
+brand-Nokia;rank_for-memory;rank-ASC;onlineStore-http:www.ideabeam.com
+
+List the Apple phone modlels which has price $90000?
+none
+brand-LG;price-24900;comparator-between
+
+What is the minimum price of Sony at http://justbuy.lk?
+min
+brand-Nokia;onlineStore-http://justbuy.lk;extremum-min
+
+What is the ram of Samsung Galaxy Pocket Neo S5312?
+none
+model-Samsung Galaxy Golden I9230
+
+what are ram available in Samsung Galaxy S4 I9500?
+none
+model-Samsung Galaxy Ace 3 Duos
+
+what is the maximum price of Samsung phone?
+max
+brand-HTC;extremum-max
+
+List the brands available at http://www.ideabeam.lk?
+none
+onlineStore-http://www.kaymu.lk
+
+Where can i get Nokia phones?
+none
+brand-Lenovo
+
+What is the lowest cost phone in Samsung?
+none
+brand-Sony;rank_for-price;rank-ASC
+
+what is the model in HTC with ram 2 at http://www.justbuy.com?
+none
+brand-HTC;memory-2;onlineStore-http://www.ideabeam.com
+
+what are the Nokia models available with ram 1.5 and cost between $30000 - $50000?
+none
+memory-0.5;price-20000,50000;comparator-BETWEEN;brand-Nokia
+
+what are the models available with the price between $40000 to $50000 at http://telescience.lk?
+none
+onlineStore-http://telescience.lk;price-30000,50000;comparator-BETWEEN
+
+What is the maximum ram in Galaxy Grand Prime 4G?
+max
+model-HTC One M9 Plus;extremum-max
+
+what are the models available with the price less than $40000 and ram 1.5 at http://www.telescience.lk?
+none
+price-50000;memory-1.5;onlineStore-http://www.hitad.lk;comparator-<=
+
+where can i get highest cost Apple phone?
+none
+brand-Apple;rank_for-price;rank-DESC
+
+Which brand have highest ram size at http://www.phoneshops.lk?
+none
+rank_for-memory;rank-DESC
+
+what are the model available with highest ram size and price less than $30000?
+none
+price-50000;comparator-<=;rank_for-memory;rank-DESC
+
+What are the LG models available with ram 0.75?
+none
+memory-1;brand-LG
+
+List the brands available at http://hitad.lk?
+none
+onlineStore-http://phoneshops.lk
+
+What are the Lenovo models available at http://www.justbuy.lk?
+none
+onlineStore-http://www.hitad.lk;brand-Lenovo
+
+List the brands available at http://phoneshops.lk?
+none
+onlineStore-http://telescience.lk
+
+what are the model available with highest ram size and price greater than $30000?
+none
+price-50000;comparator->=;rank_for-memory;rank-DESC
+
+What is the maximum Ram Size of a Nokia phone?
+max
+brand-Samsung;extremum-max
+
+What are the phones available in Samsung at http://hitad.lk?
+none
+brand-Sony;onlineStore-http://telescience.lk
+
+What are the Samsung phone models available in http://www.phoneshops.com?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+What are the Samsung mobile phones with the price less than $2000?
+none
+brand-Samsung;price-25000;comparator<2000
+
+What is the highest cost phone in Apple?
+none
+brand-Nokia;rank_for-price;rank-DESC
+
+What is the least cost phone in Nokia?
+none
+brand-Samsung;rank_for-price;rank-ASC
+
+What is the minimum price of Samsung brand phones?
+min
+brand-Sony;extremum-min
+
+What is the highest price of Samsung Galaxy Pocket S5300?
+max
+model-Apple iPad Air 2;extremum-max
+
+What is the maximum price of Apple?
+max
+model-HTC One M9 Plus;extremum-max
+
+Where can i get Samsung Galaxy Tab 4 10.1 LTE?
+none
+model-HTC One M9 Plus
+
+What is the minimum price of Samsung Galaxy Tab 4 10.1 3G?
+min
+model-HTC One M9 Plus;extremum-min
+
+where can i get Samsung Galaxy Tab 4 10.1 3G?
+none
+model-HTC One
+
+What is the least cost phone in Samsung?
+none
+brand-LG;rank_for-price;rank-ASC
+
+List the brands available at http://www.phoneshops.lk?
+none
+onlineStore-http://www.hitad.lks
+
+Which model has price above $70000 in HTC?
+none
+brand-HTC;price-70000;comparator->=
+
+where can i get HTC One M9 Plus?
+none
+model-HTC One M9 Plus
+
+List the phone models of Asus?
+none
+brand-Asus
+
+What are the Apple phone models available in http://www.ideabeam.com?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+Where can i get Apple iPhone 6s 16GB?
+none
+model-Apple iPhone 6s 16GB
+
+Where can i get HTC brand phones?
+none
+brand-HTC
+
+What is the brand of Microsoft Lumia 430 Dual SIM?
+none
+model-Microsoft Lumia 430 Dual SIM
+
+What is the maximum price of HTC Desire 826 Dual Sim?
+max
+model-HTC Desire 826 Dual Sim;extremum-max
+
+What is the minimum price of an Apple phone?
+min
+brand-Apple;extremum-min
+
+What is the maximum price of an Apple phone?
+max
+brand-Apple;extremum-max
+
+List the Apple phones which has the cost below than $25000?
+none
+brand-Apple;comparator-less;price-25000
+
+What is  the ram of Samsung Galaxy Ace 4 LTE?
+none
+model-Samsung Galaxy Ace 4 LTE
+
+List the LG phones which has ram 1.5?
+none
+brand-LG;memory-1.5
+
+What is the minimum Ram of an Apple phone?
+min
+brand-Apple;extremum-min
+
+What is the price of Nokia phone with highest ram size at http://www.ideabeam.com?
+none
+brand-Nokia;rank_for-memory;rank-ASC;onlineStore-http:www.ideabeam.com
+
+List the LG phone modlels which has price $16490?
+none
+brand-LG;price-24900;comparator-between
+
+What is the minimum price of Nokia at http://justbuy.lk?
+min
+brand-Nokia;onlineStore-http://justbuy.lk;extremum-min
+
+What is the ram of Samsung Galaxy Golden I9230?
+none
+model-Samsung Galaxy Golden I9230
+
+what are ram available in Samsung Galaxy Ace 3 Duos?
+none
+model-Samsung Galaxy Ace 3 Duos
+
+what is the maximum price of HTC phone?
+max
+brand-HTC;extremum-max
+
+List the brands available at http://www.kaymu.lk?
+none
+onlineStore-http://www.kaymu.lk
+
+Where can i get Lenovo phones?
+none
+brand-Lenovo
+
+What is the lowest cost phone in Sony?
+none
+brand-Sony;rank_for-price;rank-ASC
+
+what is the model in HTC with ram 2 at http://www.ideabeam.com?
+none
+brand-HTC;memory-2;onlineStore-http://www.ideabeam.com
+
+what are the Nokia models available with ram 0.5 and cost between $20000 - $50000?
+none
+memory-0.5;price-20000,50000;comparator-BETWEEN;brand-Nokia
+
+what are the models available with the price between $30000 to $50000 at http://telescience.lk?
+none
+onlineStore-http://telescience.lk;price-30000,50000;comparator-BETWEEN
+
+What is the maximum ram in HTC One M9 Plus?
+max
+model-HTC One M9 Plus;extremum-max
+
+what are the models available with the price less than $50000 and ram 1.5 at http://www.hitad.lk?
+none
+price-50000;memory-1.5;onlineStore-http://www.hitad.lk;comparator-<=
+
+where can i get highest cost Apple phone?
+none
+brand-Apple;rank_for-price;rank-DESC
+
+Which brand have highest ram size at http://www.hitad.lk?
+none
+rank_for-memory;rank-DESC
+
+what are the model available with highest ram size and price less than $50000?
+none
+price-50000;comparator-<=;rank_for-memory;rank-DESC
+
+What are the LG models available with ram 1?
+none
+memory-1;brand-LG
+
+List the brands available at http://phoneshops.lk?
+none
+onlineStore-http://phoneshops.lk
+
+What are the Lenovo models available at http://www.hitad.lk?
+none
+onlineStore-http://www.hitad.lk;brand-Lenovo
+
+List the brands available at http://telescience.lk?
+none
+onlineStore-http://telescience.lk
+
+what are the model available with highest ram size and price greater than $50000?
+none
+price-50000;comparator->=;rank_for-memory;rank-DESC
+
+What is the maximum Ram Size of an Samsung phone?
+max
+brand-Samsung;extremum-max
+
+What are the phones available in Sony at http://telescience.lk?
+none
+brand-Sony;onlineStore-http://telescience.lk
+
+What are the Apple phone models available in http://www.ideabeam.com?
+none
+brand-Apple;onlineStore-http://www.ideabeam.com
+
+What are the Samsung mobile phones with the price less than $2000?
+none
+brand-Samsung;price-25000;comparator<2000
+
+What is the highest cost phone in Nokia?
+none
+brand-Nokia;rank_for-price;rank-DESC
+
+What is the least cost phone in Samsung?
+none
+brand-Samsung;rank_for-price;rank-ASC
+
+What is the minimum price of Sony brand phones?
+min
+brand-Sony;extremum-min
+
+What is the highest price of Apple iPad Air 2?
+max
+model-Apple iPad Air 2;extremum-max
+
+What is the maximum price of  HTC One M9 Plus?
+max
+model-HTC One M9 Plus;extremum-max
+
+Where can i get  HTC One M9 Plus?
+none
+model-HTC One M9 Plus
+
+What is the minimum price of  HTC One M9 Plus?
+min
+model-HTC One M9 Plus;extremum-min
+
+where can i get HTC One?
+none
+model-HTC One
+
+What is the least cost phone in LG?
+none
+brand-LG;rank_for-price;rank-ASC
+
+List the brands available at http://www.hitad.lk?
+none
+onlineStore-http://www.hitad.lks

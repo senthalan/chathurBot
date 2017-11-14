@@ -3,12 +3,15 @@ from IntentClassificationNeuralNetworks import evaluate
 from answerGenerator import generate_answer
 from databaseConnector import run_query
 from queryClassifier import train, predit_query
+from queryGenerator import generate_query
+import sys
 
 if __name__ == "__main__":
     train()
-    # evaluate()
-
-    questions = ["What are the Apple phone models available in www.ideabeam.com ?",
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
+    questions = ["List the phone models of Asus ? ",
+                 "What are the Apple phone models available in www.ideabeam.com ?",
                  "Where can i get Apple iPhone 6s 16GB ?",
                  "Where can i get HTC brand phones ?",
                  "What is the brand of Microsoft Lumia 430 Dual SIM ?",
@@ -25,10 +28,10 @@ if __name__ == "__main__":
         print ("order_by : " + order_by)
         print ("order : " + order)
         print ("limit : " + limit)
-        # query = generate_query(intent, entities_list, extremum, comparator, order_by, order, limit)
-        query = predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
+        query = generate_query(intent, entities_list, extremum, comparator, order_by, order, limit)
+        # query = predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
         print "query    : " + query
-        # result = run_query(query)
-        # answer = generate_answer(result, intent)
+        result = run_query(query)
+        answer = generate_answer(result, intent)
         print ("----------------------------------")
         print

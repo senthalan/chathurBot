@@ -9,7 +9,7 @@ stemmer = LancasterStemmer()
 training_data = []
 
 file_dir = os.path.dirname(__file__)
-path = 'data/classification'
+path = 'data/intent_classification'
 abs_file_path = os.path.join(file_dir, path)
 f = open(abs_file_path, "r")
 num  = 0

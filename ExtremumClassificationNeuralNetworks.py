@@ -13,17 +13,17 @@ from intentEvaluator import evaluate_intent
 # probability threshold
 ERROR_THRESHOLD = 0.2
 # load our calculated synapse values
-synapse_file = 'synapses.json'
+synapse_file = 'synapsesExtremum.json'
 
 stemmer = LancasterStemmer()
 
 # 3 classes of training data
 training_data = []
 file_dir = os.path.dirname(__file__)
-path = 'data/intent_classification'
+path = 'data/extremum_classification'
 abs_file_path = os.path.join(file_dir, path)
 f = open(abs_file_path, "r")
-num = 0
+num  = 0
 filelines = f.read().splitlines()
 
 sentence = ''
@@ -154,7 +154,7 @@ def think(sentence, show_details=False):
 
 def train(X, y, hidden_neurons=10, alpha=1.0, epochs=50000, dropout=False, dropout_percent=0.5):
     print ("Training with %s neurons, alpha:%s, dropout:%s %s" % (
-        hidden_neurons, str(alpha), dropout, dropout_percent if dropout else ''))
+    hidden_neurons, str(alpha), dropout, dropout_percent if dropout else ''))
     print ("Input matrix: %sx%s    Output matrix: %sx%s" % (len(X), len(X[0]), 1, len(classes)))
     np.random.seed(1)
 
@@ -177,7 +177,7 @@ def train(X, y, hidden_neurons=10, alpha=1.0, epochs=50000, dropout=False, dropo
 
         if (dropout):
             layer_1 *= np.random.binomial([np.ones((len(X), hidden_neurons))], 1 - dropout_percent)[0] * (
-                1.0 / (1 - dropout_percent))
+            1.0 / (1 - dropout_percent))
 
         layer_2 = sigmoid(np.dot(layer_1, synapse_1))
 
@@ -227,6 +227,7 @@ def train(X, y, hidden_neurons=10, alpha=1.0, epochs=50000, dropout=False, dropo
                'words': words,
                'classes': classes
                }
+    # synapse_file = "synapsesExtremum.json"
 
     with open(synapse_file, 'w') as outfile:
         json.dump(synapse, outfile, indent=4, sort_keys=True)
@@ -244,35 +245,35 @@ if not open(synapse_file):
     elapsed_time = time.time() - start_time
     print ("processing time:", elapsed_time, "seconds")
 
+
 with open(synapse_file) as data_file:
     synapse = json.load(data_file)
     synapse_0 = np.asarray(synapse['synapse0'])
     synapse_1 = np.asarray(synapse['synapse1'])
 
-def classifyIntentNN(sentence, show_details=False):
+def classifyExtremumNN(sentence, show_details=False):
     results = think(sentence, show_details)
-    results = [[i, r] for i, r in enumerate(results) if r > ERROR_THRESHOLD]
+    results = [[i,r] for i,r in enumerate(results) if r>ERROR_THRESHOLD ]
     results.sort(key=lambda x: x[1], reverse=True)
-    return_results = [[classes[r[0]], r[1]] for r in results]
+    return_results =[[classes[r[0]],r[1]] for r in results]
     # print ("%s \n intent_classification: %s" % (sentence, return_results))
     if (len(return_results) == 0):
         return ''
     return return_results[0][0]
 
-
-def evaluate():
+def evaluateExtremum():
     file_dir = os.path.dirname(__file__)
     path = 'data/test'
     abs_file_path = os.path.join(file_dir, path)
     f = open(abs_file_path, "r")
-    num = 0
+    num  = 0
     filelines = f.read().splitlines()
 
     # measures for intent
     intentTP = 0
     intentFN = 0
     sentence = ''
-    sentence_class = ''
+    sentence_class = 'none'
     for index, line in enumerate(filelines):
         data = ()
         line = line.strip()
@@ -282,15 +283,23 @@ def evaluate():
             continue
         if num == 0:
             sentence = line
-        elif num == 1:
-            sentence_class = line
+        elif num == 2:
+            entities = line.split(';')
+            for entity in entities:
+                en = entity.split('-')
+                if en[0] == 'extremum':
+                    sentence_class = en[1]
         elif num == 4:
-            intent = classifyIntentNN(sentence)
+            intent = classifyExtremumNN(sentence)
             if evaluate_intent(intent, sentence_class):
                 intentTP += 1
             else:
                 intentFN += 1
             num = -1
+            sentence_class = 'none'
         num += 1
     intentModelPrecision = calculateTruePositiveRate(intentTP, intentFN)
-    print "True Positive Rate of intent Classification Model :", intentModelPrecision
+    print "True Positive Rate of extremum Classification Model :", intentModelPrecision
+
+if __name__ == "__main__":
+    evaluateExtremum()
