@@ -10,6 +10,7 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
 from configReader import read_config
+from seq2seq import seq2seq_predict
 
 predictor_var = ['model', 'brand', 'onlineStore', 'memory', 'price', 'comparator', 'order_by', 'order',
                  'limit']
@@ -121,9 +122,12 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     else:
         X.append(1)
 
-    prediction = model_mlp_classifier.predict([X])[0]
-    predicted_query = query_template[prediction]
-
+    # prediction = model_mlp_classifier.predict([X])[0]
+    prediction = seq2seq_predict([X])
+    if prediction in query_template.keys():
+        predicted_query = query_template[prediction]
+    else:
+        return ''
     template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} where {where_expression}"
 
     entity_key = ''
@@ -162,22 +166,25 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     # predicted_query.format(entity_key_three=key, entity_value_three="\"" + value + "\"")
 
     if prediction == 12 or prediction == 22 or prediction == 32:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
-                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                           entity_value_three=entity_value_three,
-                           entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
-                           entity_bet_two=str(between_value[1]))
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
+                                            entity_key_two=entity_key_two,
+                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                                            entity_value_three=entity_value_three,
+                                            entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
+                                            entity_bet_two=str(between_value[1]))
     elif prediction == 18 or prediction == 19 or prediction == 29 or prediction == 38 or prediction == 39:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
-                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                           entity_value_three=entity_value_three,
-                           order_by=order_by, order=order)
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
+                                            entity_key_two=entity_key_two,
+                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                                            entity_value_three=entity_value_three,
+                                            order_by=order_by, order=order)
     else:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
-                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                           entity_value_three=entity_value_three)
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
+                                            entity_key_two=entity_key_two,
+                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                                            entity_value_three=entity_value_three)
     select = intent.lower()
 
     final_query = template.format(function=extremum, column_name=select, table_name=table_name,
-                                    where_expression=where_part)
+                                  where_expression=where_part)
     return final_query

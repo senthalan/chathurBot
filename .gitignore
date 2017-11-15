@@ -2,3 +2,5 @@
 target
 .idea
 *.pyc
+saved/*
+!keep/.gitkeep
