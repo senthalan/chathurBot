@@ -14,7 +14,6 @@ limit_map = {"is": "1", "are": ""}
 
 def send_question_core_nlp(question):
     intent = classifyIntentNN(question)
-    print "xx"
     extremum = classifyExtremumNN(question)
     if extremum == 'none':
         extremum = ''
@@ -39,9 +38,9 @@ def send_question_core_nlp(question):
         key_str = str(key).lower()
         if key_str == 'comparator':
             comparator = comparator_map[response[key]]
-        elif key_str == 'rank_for':
+        elif extremum =='' and key_str == 'rank_for':
             order_by = response[key]
-        elif key_str == 'rank':
+        elif extremum =='' and key_str == 'rank':
             order = order_map[response[key]]
         elif key_str == 'limit':
             limit = limit_map[response[key]]

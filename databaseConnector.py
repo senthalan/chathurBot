@@ -5,12 +5,15 @@ cnx.text_factory = str
 
 
 def run_query(query):
-    answers=[]
-    cursor = cnx.cursor(buffered=True)
-    cursor.execute(query)
-    result = [[str(item) for item in results] for results in cursor.fetchall()]
-    for val in result:
-       answers.append(''.join(val).lower())
+    answers = []
+    try :
+        cursor = cnx.cursor(buffered=True)
+        cursor.execute(query)
+        result = [[str(item) for item in results] for results in cursor.fetchall()]
+        for val in result:
+           answers.append(''.join(val).lower())
+        cursor.close()
 
-    cursor.close()
-    return answers
+        return answers
+    except mysql.connector.errors.ProgrammingError:
+        return answers

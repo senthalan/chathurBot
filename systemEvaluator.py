@@ -48,8 +48,8 @@ def startEvaluate():
 
     for i in range(len(questions)-1):
         print "Question ",i+1,": ",questions[i]
-        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
         print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
         # print "start"
         # intent="price"
@@ -90,17 +90,25 @@ def startEvaluate():
         # print 'partialMatch:',partialMatch
         # print 'wrongHit:',wrongHit
 
-        # TODO
+
+        # TODO comment below code to execute wit.ai. this is applicable for coreNLP
+        storeVal=[]
+        for store in entities_list["onlineStore"]:
+            storeVal.append("http://"+store)
+        entities_list["onlineStore"]=storeVal
         # generatedQuery=generate_query(intent,entities_list,extremum,comparator,order_by,order,limit)
         generatedQuery = predit_query(intent, entities_list, extremum, comparator, order_by, order, limit)
         if generatedQuery!="NULL" and intent!="":
+            print "actual query :" + queries[i]
             print "\t Generated query    : " + generatedQuery
             result = run_query(generatedQuery)
 
 
-            answer = generate_answer(result, intent)
+            # answer = generate_answer(result, intent)
+            print result
+            print answers[i]
 
-            evaluateSqlPerQuestion(answers[i],answer)
+            evaluateSqlPerQuestion(answers[i],result)
         print ("---------------------------------------------------------------------------------------------------------")
         print
 
