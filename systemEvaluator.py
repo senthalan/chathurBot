@@ -1,9 +1,9 @@
-from witAI import send_question
+# from witAI import send_question
 from queryGenerator import generate_query
 from databaseConnector import run_query
-from readQuestionsWit import *
+# from readQuestionsWit import *
 from CoreNLP import send_question_core_nlp
-# from readQuestionsCoreNLP import *
+from readQuestionsCoreNLP import *
 from evaluationMetricCalculator import *
 from collections import Iterable
 from cosineCalculator import *
@@ -48,8 +48,8 @@ def startEvaluate():
 
     for i in range(len(questions)-1):
         print "Question ",i+1,": ",questions[i]
-        intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
-        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
+        # intent, entities_list, extremum, comparator, order_by, order, limit = send_question(questions[i].strip())
+        intent, entities_list, extremum, comparator, order_by, order, limit = send_question_core_nlp(questions[i].strip())
         print "output from wit:",intent,entities_list,extremum,comparator,order_by,order,limit
         # print "start"
         # intent="price"
@@ -278,8 +278,8 @@ def calculatePassedQueries(intentFlag):
 
 if __name__ == "__main__":
     #Read the test file
-    readFileWit()
-    # readFileCoreNLP()
+    # readFileWit()
+    readFileCoreNLP()
     questions=list(get_question())
     queries=list(get_query())
     intents=list(get_intent())
