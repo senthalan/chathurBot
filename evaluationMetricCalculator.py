@@ -12,19 +12,25 @@ def calculateFullPrecision(FM, PM, WH):
 
 def calculatePartialPrecision(PM, FM, WH):
     if (FM + PM + WH == 0):
-        PM = 0
+        PP = 0
     else:
-        PM = Decimal(PM) / Decimal((FM + PM + WH))
-    return PM
+        PP = Decimal(PM) / Decimal((FM + PM + WH))
+    return PP
 
 
 def calculateFullRecall(FM, PM, CM):
-    FR = Decimal(FM) / Decimal((FM + PM + CM))
+    if (FM + PM + CM == 0):
+        FR=0
+    else:
+        FR = Decimal(FM) / Decimal((FM + PM + CM))
     return FR
 
 
 def calculatePartialRecall(FM, PM, CM):
-    PR = Decimal(PM) / Decimal((FM + PM + CM))
+    if (FM + PM + CM == 0):
+        PR=0
+    else:
+        PR = Decimal(PM) / Decimal((FM + PM + CM))
     return PR
 
 

@@ -70,23 +70,23 @@ def send_question(question):
     # reading the response
     for key in response:
         if key == 'intent':
-            intent = ((response[key])[0])['value']
+            intent = ((response[key])[0])['value'].lower()
         elif key == 'extremum':
-            extremum = ((response[key])[0])['value']
+            extremum = ((response[key])[0])['value'].lower()
         elif key == 'comparator':
-            comparator = comparator_map[((response[key])[0])['value']]
+            comparator = comparator_map[((response[key])[0])['value']].lower()
         elif key == 'rank_for':
-            order_by = ((response[key])[0])['value']
+            order_by = ((response[key])[0])['value'].lower()
         elif key == 'rank':
-            order = order_map[((response[key])[0])['value']]
+            order = order_map[((response[key])[0])['value']].lower()
         elif key == 'limit':
-            limit = limit_map[((response[key])[0])['value']]
+            limit = limit_map[((response[key])[0])['value']].lower()
         else:
             try:
                 entities = (response[key])
                 values = []
                 for entity in entities:
-                    values.append(str(entity['value']))
+                    values.append(str(entity['value']).lower())
                 entities_list[entity_map[key]] = values
             except:
                 print "Value Error"

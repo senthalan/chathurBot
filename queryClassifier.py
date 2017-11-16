@@ -84,10 +84,14 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     keys = entities_list.keys()
     between_value = {}
     between_key = {}
+    print entities_list
     for entity in predictor_var:
         if entity == 'comparator':
             break
         if entity in entities_list:
+            if len(entities_list.get(entity)) == 0:
+                X.append(0)
+                continue
             X.append(1)
             if len(entities_list.get(entity)) > 1:
                 between_key = entity
@@ -112,7 +116,7 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     # order
     if order == 'DESC':
         X.append(1)
-    if order == 'ASE':
+    elif order == 'ASE':
         X.append(2)
     else:
         X.append(0)
@@ -122,13 +126,17 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     else:
         X.append(1)
 
-    # prediction = model_mlp_classifier.predict([X])[0]
-    prediction = seq2seq_predict([X])
+    prediction = model_mlp_classifier.predict([X])[0]
     if prediction in query_template.keys():
         predicted_query = query_template[prediction]
     else:
         return ''
-    template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} where {where_expression}"
+    print "predicted query ", predicted_query
+
+    if (order_by != ''):
+        template = u"SELECT {function}({column_name}) FROM {table_name} where {where_expression}"
+    else:
+        template = u"SELECT DISTINCT {function}({column_name}) FROM {table_name} where {where_expression}"
 
     entity_key = ''
     entity_value = ''
@@ -138,16 +146,20 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     entity_value_three = ''
     is_prime_set = False
     is_sec_set = False
-    for key in keys:
+    for key in entities_list.keys():
         value = entities_list.get(key)
+        if len(value) == 0:
+            continue
         if prediction == 11 or prediction == 21 or prediction == 31 or prediction == 13 or prediction == 23 or prediction == 33:
             if (key == "price") or (key == "memory"):
                 entity_key = key
                 entity_value = str(value[0])
                 del entities_list[key]
                 is_prime_set = True
-    for key in keys:
+    for key in entities_list.keys():
         value = entities_list.get(key)
+        if len(value) == 0:
+            continue
         if not is_prime_set:
             entity_key = key
             entity_value = "\"" + value[0] + "\""
@@ -166,25 +178,24 @@ def predit_query(intent, entities_list, extremum, comparator, order_by, order, l
     # predicted_query.format(entity_key_three=key, entity_value_three="\"" + value + "\"")
 
     if prediction == 12 or prediction == 22 or prediction == 32:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
-                                            entity_key_two=entity_key_two,
-                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                                            entity_value_three=entity_value_three,
-                                            entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
-                                            entity_bet_two=str(between_value[1]))
+        if (len(between_value ) != 2):
+            return "NULL"
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three,
+                           entity_bet_key=between_key, entity_bet_one=str(between_value[0]),
+                           entity_bet_two=str(between_value[1]))
     elif prediction == 18 or prediction == 19 or prediction == 29 or prediction == 38 or prediction == 39:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
-                                            entity_key_two=entity_key_two,
-                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                                            entity_value_three=entity_value_three,
-                                            order_by=order_by, order=order)
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three,
+                           order_by=order_by, order=order)
     else:
-        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value,
-                                            entity_key_two=entity_key_two,
-                                            entity_value_two=entity_value_two, entity_key_three=entity_key_three,
-                                            entity_value_three=entity_value_three)
+        where_part = predicted_query.format(entity_key=entity_key, entity_value=entity_value, entity_key_two=entity_key_two,
+                           entity_value_two=entity_value_two, entity_key_three=entity_key_three,
+                           entity_value_three=entity_value_three)
     select = intent.lower()
 
     final_query = template.format(function=extremum, column_name=select, table_name=table_name,
-                                  where_expression=where_part)
+                                    where_expression=where_part)
     return final_query

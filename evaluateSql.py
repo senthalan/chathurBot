@@ -8,6 +8,8 @@ def evaluateSqlPerQuestion(actualAns,estimatedAns):
     global noOfCorrectQueries
     # print actualAns
     # print estimatedAns
+    actualAns = [w.lower() for w in actualAns]
+    estimatedAns = [w.lower() for w in estimatedAns]
 
     TP=len(set(actualAns).intersection(set(estimatedAns)))
     FP=len(set(estimatedAns).difference(set(actualAns)))

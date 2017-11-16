@@ -104,7 +104,8 @@ def generateEntityList(entity):
 
     for entityKeyVal in entitiesList:
         value=[]
-        entityKeyValuePair=str(entityKeyVal).split('-')
+
+        entityKeyValuePair=str(entityKeyVal.lower()).split('-')
         key=entityKeyValuePair[0]
 
         if key in entityTypeList:
